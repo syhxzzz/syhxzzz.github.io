@@ -174,7 +174,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/09/12/hello-world/" class="post-title-link" itemprop="url">一点点的Archlinux的经验分享</a>
+          <a href="/2022/09/12/hello-world/" class="post-title-link" itemprop="url">Untitled</a>
         </h2>
 
         <div class="post-meta-container">
@@ -192,7 +192,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-09-15 12:29:40" itemprop="dateModified" datetime="2022-09-15T12:29:40+08:00">2022-09-15</time>
+      <time title="Modified: 2022-09-16 10:12:36" itemprop="dateModified" datetime="2022-09-16T10:12:36+08:00">2022-09-16</time>
     </span>
 
   
@@ -205,20 +205,15 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
+          <hr>
+<h2 id="title-SA’s-Blog"><a href="#title-SA’s-Blog" class="headerlink" title="title:SA’s Blog"></a>title:SA’s Blog</h2><p>受到某位信安同学影响，加上自己学习CS相关和Unity和策划一直少有笔记与总结，故搭建博客以记录学习所得。</p>
+<h2 id="Archlinux"><a href="#Archlinux" class="headerlink" title="Archlinux"></a>Archlinux</h2><h3 id="Archlinux-使用时遇到的问题"><a href="#Archlinux-使用时遇到的问题" class="headerlink" title="Archlinux 使用时遇到的问题"></a>Archlinux 使用时遇到的问题</h3><h4 id="清空下载缓存"><a href="#清空下载缓存" class="headerlink" title="清空下载缓存"></a>清空下载缓存</h4><p>目前在学校里只能使用最多两个设备的校园网，而电脑的Windows系统与Linux系统被视作两个系统，加上偶尔需要用到的平板，有时候需要进行验证才能上网。在没有验证的情况下进行每日的更新操作时，会导致无法下载，并且正常上网时也不能下载。此时需要对缓存区进行清理，输入  <code>rm -f /var/lib/pacman/sync/* </code> 即可。</p>
+<h2 id="CS相关"><a href="#CS相关" class="headerlink" title="CS相关"></a>CS相关</h2><h3 id="Python环境切换"><a href="#Python环境切换" class="headerlink" title="Python环境切换"></a>Python环境切换</h3><p>在上CS61A网课时，需要用Python3.6进行操作，Archlinux自带的Python版本是最新的3.11无法进行Lab实验操作，在网上寻找之后，找到了最为简单且效果最好的。<code>pyenv</code><br>首先下载<code>pyenv</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/pyenv/pyenv.git ~/.pyenv</span><br></pre></td></tr></table></figure>
+<p>安装需要版本的Python</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pyenv install 3.10.4</span><br></pre></td></tr></table></figure>
+<p>运用<code>pyenv</code>对python版本就行修改</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pyenv shell &lt;version&gt; -- 仅仅为当前shell修改</span><br><span class="line">pyenv local &lt;version&gt; -- 将为此文件夹修改</span><br><span class="line">pyenv global &lt;version&gt; -- 修改全局变量</span><br></pre></td></tr></table></figure>
       
     </div>
 
