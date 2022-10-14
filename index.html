@@ -156,6 +156,82 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/10/14/Hello-world/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Hexo">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/10/14/Hello-world/" class="post-title-link" itemprop="url">1111</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-10-14 13:46:47 / Modified: 13:49:03" itemprop="dateCreated datePublished" datetime="2022-10-14T13:46:47+08:00">2022-10-14</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>受到某位信安同学影响，加上自己学习CS相关和Unity和策划一直少有笔记与总结，故搭建博客以记录学习所得。</p>
+<h2 id="Archlinux"><a href="#Archlinux" class="headerlink" title="Archlinux"></a>Archlinux</h2><h3 id="Archlinux-使用时遇到的问题"><a href="#Archlinux-使用时遇到的问题" class="headerlink" title="Archlinux 使用时遇到的问题"></a>Archlinux 使用时遇到的问题</h3><h4 id="清空下载缓存"><a href="#清空下载缓存" class="headerlink" title="清空下载缓存"></a>清空下载缓存</h4><p>目前在学校里只能使用最多两个设备的校园网，而电脑的Windows系统与Linux系统被视作两个系统，加上偶尔需要用到的平板，有时候需要进行验证才能上网。在没有验证的情况下进行每日的更新操作时，会导致无法下载，并且正常上网时也不能下载。此时需要对缓存区进行清理，输入  <code>rm -f /var/lib/pacman/sync/* </code> 即可。</p>
+<h2 id="CS相关"><a href="#CS相关" class="headerlink" title="CS相关"></a>CS相关</h2><h3 id="Python环境切换"><a href="#Python环境切换" class="headerlink" title="Python环境切换"></a>Python环境切换</h3><p>在上CS61A网课时，需要用Python3.6进行操作，Archlinux自带的Python版本是最新的3.11无法进行Lab实验操作，在网上寻找之后，找到了最为简单且效果最好的。<code>pyenv</code><br>首先下载<code>pyenv</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/pyenv/pyenv.git ~/.pyenv</span><br></pre></td></tr></table></figure>
+<p>安装需要版本的Python</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pyenv install 3.10.4</span><br></pre></td></tr></table></figure>
+<p>运用<code>pyenv</code>对python版本就行修改</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pyenv shell &lt;version&gt; -- 仅仅为当前shell修改</span><br><span class="line">pyenv local &lt;version&gt; -- 将为此文件夹修改</span><br><span class="line">pyenv global &lt;version&gt; -- 修改全局变量</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/10/14/Hello-world2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -186,7 +262,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2022-10-14 11:59:21 / Modified: 12:02:32" itemprop="dateCreated datePublished" datetime="2022-10-14T11:59:21+08:00">2022-10-14</time>
+      <time title="Created: 2022-10-14 11:59:21 / Modified: 12:38:55" itemprop="dateCreated datePublished" datetime="2022-10-14T11:59:21+08:00">2022-10-14</time>
     </span>
 
   
@@ -199,90 +275,13 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h2 id="使用Hexo进行博客的搭建"><a href="#使用Hexo进行博客的搭建" class="headerlink" title="使用Hexo进行博客的搭建"></a>使用Hexo进行博客的搭建</h2>
-      
-    </div>
+          <h2 id="使用Hexo进行博客的搭建"><a href="#使用Hexo进行博客的搭建" class="headerlink" title="使用Hexo进行博客的搭建"></a>使用Hexo进行博客的搭建</h2><h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><pre><code>1.可以部署你的网站的域名
+2.用于存放网页的Git仓库
+3.Hexo
+4.Markdown相关语法
+</code></pre>
+<h3 id="相关原理"><a href="#相关原理" class="headerlink" title="相关原理"></a>相关原理</h3><p>文章的内容以<code>Markdown</code>语言进行书写。但是md是不能直接部署到网页上的，需要<code>Hexo</code>将其加工成为<code>Html</code>文件，加工完后就能看到可视化的网页效果了。但是这些只能在你的电脑上被看到，并没有被部署到网络上。所以需要</p>
 
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/12/Hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Hexo">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/09/12/Hello-world/" class="post-title-link" itemprop="url">Untitled</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-09-12 12:27:37" itemprop="dateCreated datePublished" datetime="2022-09-12T12:27:37+08:00">2022-09-12</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-09-16 10:21:12" itemprop="dateModified" datetime="2022-09-16T10:21:12+08:00">2022-09-16</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <hr>
-<h2 id="SA’s-Blog"><a href="#SA’s-Blog" class="headerlink" title="SA’s Blog"></a>SA’s Blog</h2><p>受到某位信安同学影响，加上自己学习CS相关和Unity和策划一直少有笔记与总结，故搭建博客以记录学习所得。</p>
-<h2 id="Archlinux"><a href="#Archlinux" class="headerlink" title="Archlinux"></a>Archlinux</h2><h3 id="Archlinux-使用时遇到的问题"><a href="#Archlinux-使用时遇到的问题" class="headerlink" title="Archlinux 使用时遇到的问题"></a>Archlinux 使用时遇到的问题</h3><h4 id="清空下载缓存"><a href="#清空下载缓存" class="headerlink" title="清空下载缓存"></a>清空下载缓存</h4><p>目前在学校里只能使用最多两个设备的校园网，而电脑的Windows系统与Linux系统被视作两个系统，加上偶尔需要用到的平板，有时候需要进行验证才能上网。在没有验证的情况下进行每日的更新操作时，会导致无法下载，并且正常上网时也不能下载。此时需要对缓存区进行清理，输入  <code>rm -f /var/lib/pacman/sync/* </code> 即可。</p>
-<h2 id="CS相关"><a href="#CS相关" class="headerlink" title="CS相关"></a>CS相关</h2><h3 id="Python环境切换"><a href="#Python环境切换" class="headerlink" title="Python环境切换"></a>Python环境切换</h3><p>在上CS61A网课时，需要用Python3.6进行操作，Archlinux自带的Python版本是最新的3.11无法进行Lab实验操作，在网上寻找之后，找到了最为简单且效果最好的。<code>pyenv</code><br>首先下载<code>pyenv</code></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/pyenv/pyenv.git ~/.pyenv</span><br></pre></td></tr></table></figure>
-<p>安装需要版本的Python</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pyenv install 3.10.4</span><br></pre></td></tr></table></figure>
-<p>运用<code>pyenv</code>对python版本就行修改</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pyenv shell &lt;version&gt; -- 仅仅为当前shell修改</span><br><span class="line">pyenv local &lt;version&gt; -- 将为此文件夹修改</span><br><span class="line">pyenv global &lt;version&gt; -- 修改全局变量</span><br></pre></td></tr></table></figure>
       
     </div>
 
