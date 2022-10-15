@@ -3,13 +3,13 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
-subtitle: ''
-description: ''
-keywords:
-author: John Doe
-language: en
-timezone: ''
+title: syhxzzz's Blog
+subtitle: 加权弱鸡、代码蠢材、策划新手
+description: 每天不知道都在干什么，在写一些乱七八糟的东西，包括但不限于Unity、游戏策划、CS技术
+keywords: Unity，游戏策划、CS、Archlinux
+author: syhxzzz
+language: zh
+timezone: UTC
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
