@@ -20,28 +20,28 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.13.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="准备工作1.可以部署你的网站的域名2.用于存放网页的Git仓库3.Hexo4.Markdown相关语法 相关原理文章的内容以Markdown语言进行书写。但是md文件是不能直接部署到网页上的，需要Hexo将其加工成为Html文件，加工完后就能看到可视化的网页效果了。但是这些只能在你的电脑上被看到，并没有被部署到网络上。所以需要在Hexo的目录处建一个Git的仓库，并且将内容同步到Github上，此">
+    <meta name="description" content="在好奇心的驱使下，尝试了一下 Novel Ai ，简单分享一下使用方法心得。最初我是打算在自己电脑上进行运算的，然而电脑的3050ti只有4G的显存，效能不是很好。顾将目光投向 Google 的云服务，之后在tg上找到了一些大佬的代码，和他们做好的简单易用的模型。  准备工作1.一台能用 Google 搜索引擎的电脑2.一个或多个 Google 账号 原理介绍具体使用的是 Google 的 Col">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用Hexo进行博客的搭建">
-<meta property="og:url" content="http://example.com/2022/10/14/%E4%BD%BF%E7%94%A8Hexo%E8%BF%9B%E8%A1%8C%E5%8D%9A%E5%AE%A2%E7%9A%84%E6%90%AD%E5%BB%BA/index.html">
+<meta property="og:title" content="Novel AI的白嫖使用">
+<meta property="og:url" content="http://example.com/2022/10/22/NovelAi%E7%9A%84%E7%99%BD%E5%AB%96%E4%BD%BF%E7%94%A8/index.html">
 <meta property="og:site_name" content="syhxzzz&#39;s Blog">
-<meta property="og:description" content="准备工作1.可以部署你的网站的域名2.用于存放网页的Git仓库3.Hexo4.Markdown相关语法 相关原理文章的内容以Markdown语言进行书写。但是md文件是不能直接部署到网页上的，需要Hexo将其加工成为Html文件，加工完后就能看到可视化的网页效果了。但是这些只能在你的电脑上被看到，并没有被部署到网络上。所以需要在Hexo的目录处建一个Git的仓库，并且将内容同步到Github上，此">
+<meta property="og:description" content="在好奇心的驱使下，尝试了一下 Novel Ai ，简单分享一下使用方法心得。最初我是打算在自己电脑上进行运算的，然而电脑的3050ti只有4G的显存，效能不是很好。顾将目光投向 Google 的云服务，之后在tg上找到了一些大佬的代码，和他们做好的简单易用的模型。  准备工作1.一台能用 Google 搜索引擎的电脑2.一个或多个 Google 账号 原理介绍具体使用的是 Google 的 Col">
 <meta property="og:locale">
-<meta property="article:published_time" content="2022-10-14T13:46:47.000Z">
-<meta property="article:modified_time" content="2022-10-18T06:12:06.351Z">
+<meta property="article:published_time" content="2022-10-22T09:01:32.000Z">
+<meta property="article:modified_time" content="2022-10-20T01:08:52.343Z">
 <meta property="article:author" content="syhxzzz">
 <meta property="article:tag" content="Unity，游戏策划、CS、Archlinux">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://example.com/2022/10/14/%E4%BD%BF%E7%94%A8Hexo%E8%BF%9B%E8%A1%8C%E5%8D%9A%E5%AE%A2%E7%9A%84%E6%90%AD%E5%BB%BA/">
+<link rel="canonical" href="http://example.com/2022/10/22/NovelAi%E7%9A%84%E7%99%BD%E5%AB%96%E4%BD%BF%E7%94%A8/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh","comments":true,"permalink":"http://example.com/2022/10/14/%E4%BD%BF%E7%94%A8Hexo%E8%BF%9B%E8%A1%8C%E5%8D%9A%E5%AE%A2%E7%9A%84%E6%90%AD%E5%BB%BA/","path":"2022/10/14/使用Hexo进行博客的搭建/","title":"使用Hexo进行博客的搭建"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh","comments":true,"permalink":"http://example.com/2022/10/22/NovelAi%E7%9A%84%E7%99%BD%E5%AB%96%E4%BD%BF%E7%94%A8/","path":"2022/10/22/NovelAi的白嫖使用/","title":"Novel AI的白嫖使用"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>使用Hexo进行博客的搭建 | syhxzzz's Blog</title>
+<title>Novel AI的白嫖使用 | syhxzzz's Blog</title>
   
 
 
@@ -111,7 +111,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="nav-number">1.</span> <span class="nav-text">准备工作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E5%8E%9F%E7%90%86"><span class="nav-number">2.</span> <span class="nav-text">相关原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B7%E4%BD%93%E6%93%8D%E4%BD%9C"><span class="nav-number">3.</span> <span class="nav-text">具体操作</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="nav-number">1.</span> <span class="nav-text">准备工作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D"><span class="nav-number">2.</span> <span class="nav-text">原理介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B7%E4%BD%93%E6%AD%A5%E9%AA%A4"><span class="nav-number">3.</span> <span class="nav-text">具体步骤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-number">4.</span> <span class="nav-text">注意事项</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -164,7 +164,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/10/14/%E4%BD%BF%E7%94%A8Hexo%E8%BF%9B%E8%A1%8C%E5%8D%9A%E5%AE%A2%E7%9A%84%E6%90%AD%E5%BB%BA/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/10/22/NovelAi%E7%9A%84%E7%99%BD%E5%AB%96%E4%BD%BF%E7%94%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -177,12 +177,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="使用Hexo进行博客的搭建 | syhxzzz's Blog">
+      <meta itemprop="name" content="Novel AI的白嫖使用 | syhxzzz's Blog">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          使用Hexo进行博客的搭建
+          Novel AI的白嫖使用
         </h1>
 
         <div class="post-meta-container">
@@ -193,14 +193,14 @@
       </span>
       <span class="post-meta-item-text">Posted on</span>
 
-      <time title="Created: 2022-10-14 13:46:47" itemprop="dateCreated datePublished" datetime="2022-10-14T13:46:47Z">2022-10-14</time>
+      <time title="Created: 2022-10-22 09:01:32" itemprop="dateCreated datePublished" datetime="2022-10-22T09:01:32Z">2022-10-22</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-10-18 06:12:06" itemprop="dateModified" datetime="2022-10-18T06:12:06Z">2022-10-18</time>
+      <time title="Modified: 2022-10-20 01:08:52" itemprop="dateModified" datetime="2022-10-20T01:08:52Z">2022-10-20</time>
     </span>
 
   
@@ -212,8 +212,8 @@
       </span>
       <span class="post-meta-item-text">Changyan: </span>
     
-    <a title="使用Hexo进行博客的搭建" href="/2022/10/14/%E4%BD%BF%E7%94%A8Hexo%E8%BF%9B%E8%A1%8C%E5%8D%9A%E5%AE%A2%E7%9A%84%E6%90%AD%E5%BB%BA/#SOHUCS" itemprop="discussionUrl">
-      <span id="sourceId::c73f2e633f8dd7717a2a00dee282c470" class="cy_cmt_count" itemprop="commentCount"></span>
+    <a title="Novel AI的白嫖使用" href="/2022/10/22/NovelAi%E7%9A%84%E7%99%BD%E5%AB%96%E4%BD%BF%E7%94%A8/#SOHUCS" itemprop="discussionUrl">
+      <span id="sourceId::90ff8635401ea062ee6d0d018730a36b" class="cy_cmt_count" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -227,9 +227,12 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><p>1.可以部署你的网站的域名<br>2.用于存放网页的Git仓库<br>3.Hexo<br>4.Markdown相关语法</p>
-<h2 id="相关原理"><a href="#相关原理" class="headerlink" title="相关原理"></a>相关原理</h2><p>文章的内容以<code>Markdown</code>语言进行书写。但是md文件是不能直接部署到网页上的，需要<code>Hexo</code>将其加工成为<code>Html</code>文件，加工完后就能看到可视化的网页效果了。但是这些只能在你的电脑上被看到，并没有被部署到网络上。所以需要在<code>Hexo</code>的目录处建一个Git的仓库，并且将内容同步到Github上，此时应该就可以通过访问你的<code>YourGithubName.github.io</code>进入你的网站。然后将域名进行解析。之后就能看到带有你定制域名的博客了。</p>
-<h2 id="具体操作"><a href="#具体操作" class="headerlink" title="具体操作"></a>具体操作</h2>
+        <p>在好奇心的驱使下，尝试了一下 <code>Novel Ai</code> ，简单分享一下使用方法心得。最初我是打算在自己电脑上进行运算的，然而电脑的3050ti只有4G的显存，效能不是很好。顾将目光投向 <code>Google</code> 的云服务，之后在tg上找到了一些大佬的代码，和他们做好的简单易用的模型。 </p>
+<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><p>1.一台能用 <code>Google</code> 搜索引擎的电脑<br>2.一个或多个 <code>Google</code> 账号</p>
+<h2 id="原理介绍"><a href="#原理介绍" class="headerlink" title="原理介绍"></a>原理介绍</h2><p>具体使用的是 <code>Google</code> 的 <code>Colab</code> ，每一个 <code>Google</code> 账号每天可以使用10个计算单元，用最低配置的模式进行计算的话，大概一个账号可以算五到六个小时。<del>多个账号实现永动效果。</del></p>
+<h2 id="具体步骤"><a href="#具体步骤" class="headerlink" title="具体步骤"></a>具体步骤</h2><p>1.打开 <code>Google</code> 的<a target="_blank" rel="noopener" href="https://colab.research.google.com/drive/1_Ma71L6uGbtt6UQyA3FjqW2lcZ5Bjck-">Colab</a><br>2.登入你的 <code>Google</code> 账号<br>3.找到左上角的 <code>Runtime</code> 按钮，点击 <code>Runall</code><br>4.等待前3步跑完，之后可以根据个人需求选择4G或者7G的模型<br>5.上一步做完后，终端会保持运行，点开一串长长的网页，就能使用 <code>Novel AI</code> 的前后端啦</p>
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><p>现在使用的云计算获得的图片，本质上还是用的 <code>Novel AI</code> 算出来的。由于 <code>Novel AI</code> 在版权问题上存在较大的争议，请不要将其商用！！！</p>
+
     </div>
 
     
@@ -242,14 +245,11 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2022/09/05/Hello-world/" rel="prev" title="起源">
-                  <i class="fa fa-chevron-left"></i> 起源
+                <a href="/2022/10/14/%E4%BD%BF%E7%94%A8Hexo%E8%BF%9B%E8%A1%8C%E5%8D%9A%E5%AE%A2%E7%9A%84%E6%90%AD%E5%BB%BA/" rel="prev" title="使用Hexo进行博客的搭建">
+                  <i class="fa fa-chevron-left"></i> 使用Hexo进行博客的搭建
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2022/10/22/NovelAi%E7%9A%84%E7%99%BD%E5%AB%96%E4%BD%BF%E7%94%A8/" rel="next" title="Novel AI的白嫖使用">
-                  Novel AI的白嫖使用 <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>
@@ -261,7 +261,7 @@
 
 
 
-    <div class="comments" id="SOHUCS" sid="c73f2e633f8dd7717a2a00dee282c470"></div>
+    <div class="comments" id="SOHUCS" sid="90ff8635401ea062ee6d0d018730a36b"></div>
 </div>
   </main>
 
