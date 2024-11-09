@@ -121,7 +121,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-count">11</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -164,7 +164,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/11/10/post/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/11/10/%E9%BB%91%E7%A5%9E%E8%AF%9D%E5%88%86%E6%9E%90/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -182,7 +182,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/11/10/post/" class="post-title-link" itemprop="url">post</a>
+          <a href="/2024/11/10/%E9%BB%91%E7%A5%9E%E8%AF%9D%E5%88%86%E6%9E%90/" class="post-title-link" itemprop="url">黑神话分析</a>
         </h2>
 
         <div class="post-meta-container">
@@ -194,7 +194,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2024-11-09 21:29:15 / Modified: 13:31:14" itemprop="dateCreated datePublished" datetime="2024-11-09T21:29:15Z">2024-11-09</time>
+      <time title="Created: 2024-11-09 21:35:42 / Modified: 13:35:47" itemprop="dateCreated datePublished" datetime="2024-11-09T21:35:42Z">2024-11-09</time>
     </span>
 
   
@@ -206,8 +206,480 @@
       </span>
       <span class="post-meta-item-text">Changyan: </span>
     
-    <a title="post" href="/2024/11/10/post/#SOHUCS" itemprop="discussionUrl">
-      <span id="sourceId::34a209faca7722bb210515541e07e487" class="cy_cmt_count" itemprop="commentCount"></span>
+    <a title="黑神话分析" href="/2024/11/10/%E9%BB%91%E7%A5%9E%E8%AF%9D%E5%88%86%E6%9E%90/#SOHUCS" itemprop="discussionUrl">
+      <span id="sourceId::54d0dc548e8eda1406752256fe3e94e8" class="cy_cmt_count" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="战斗"><a href="#战斗" class="headerlink" title="战斗"></a>战斗</h1><p>核心概念：棍势和棍势点。</p>
+<p>在战斗中通过轻攻击积攒棍势，在和敌人周旋时闪避获得棍势，丹药和衣服的联动也可以积攒棍势。<strong>重击 or 识破</strong>消耗棍势点获得更强大的伤害和冲击力。</p>
+<p>怎么消耗重击？对应招式的最终技能打出。立棍，劈棍，戳棍。</p>
+<p>劈棍，最主流的设计！聊聊为什么最主流的劈棍打不中人。</p>
+<ul>
+<li>前三个豆释放时，在冲刺时有朝向追踪，但是在打出时没有朝向追踪</li>
+<li>敌人的碰撞模型和受击模型之间的 gap，导致空棍。玩家被敌人的碰撞模型阻挡时，会认为此时发动攻击可以命中，但是受击模型可能有可能在攻击范围之外，导致空棍，点名百眼魔君</li>
+<li>我霸体呢？在空中转体两圈半直接被扣篮，What can I say</li>
+<li>劈棍的识破，动作最帅的一集。介绍劈棍<ul>
+<li>劈棍使用方式，在轻攻击（X）前四段，使用重击按键（Y），此时会进行切棍式。在切棍式时，如果敌方此时在攻击你，会进入识破状态，会进入霸体和免伤状态，并返还一次棍式点。之后可以选择继续释放斩棍式或者结束释放。</li>
+<li>收益：900%的攻击倍率，和斩棍式的巨大的冲击力 &#x3D;&#x3D;&#x3D; 棍式三豆蓄力</li>
+<li>乍看一下收益很高，但是其实识破的触发方式是很苛刻的，需要先进行轻击状态，轻击前四下攻击的每一段的特定的某几帧的窗口期中，才可以进行识破判定，所以识破的使用不是实时的，所以又回到了背板。</li>
+</ul>
+</li>
+</ul>
+<h3 id="战斗机制的割裂感"><a href="#战斗机制的割裂感" class="headerlink" title="战斗机制的割裂感"></a>战斗机制的割裂感</h3><h4 id="变身、化身"><a href="#变身、化身" class="headerlink" title="变身、化身"></a>变身、化身</h4><p>不是很懂为什么要做这个？跟正常战斗割裂感很强，变身变成了独立的一套技能释放，但是和本体之间没有任何互动</p>
+<ul>
+<li>降低难度？那我为什么不把这个工作量拿去优化手感，比如上文的劈棍锁定。实在不行把复活丢早一点，而不是留在二周末才能获得</li>
+</ul>
+<h4 id="主动技能"><a href="#主动技能" class="headerlink" title="主动技能"></a>主动技能</h4><ul>
+<li>定身术的设计<ul>
+<li>其实不太喜欢定身术和隐身的设计，游戏的技能可以是高风险高回报，比如蓄力一个很厉害的冲击波，或者稳定的增幅比如给自己加 buff，或者像将翻滚变成闪身的强化。</li>
+<li>但是定身术就是让对方不能动，只能挨打，隐身是有一长段的休息期，喝药磕丹蓄力能可以做。在设计上都是低风险高回报。游科是知道这个的，所以设计了很长的 CD 和蓝条的限制，过于依赖这两个就是释放技能，等待技能 CD 再打的回合制游戏，变身和化身本质上延长自己的攻击回合和防止在等 CD 时暴毙。</li>
+<li>定身术的奇怪的介绍</li>
+<li>完美定身：在敌人出手的瞬间使用，延长定身时长</li>
+<li>大部分敌人出手后霸体，不会被定身，并且浪费 CD 和蓝量</li>
+<li>但是对于玩家来说，没有足够的信息来判定，只能多试，或者在还没出招时使用，那我完美定身的意义呢？</li>
+</ul>
+</li>
+<li>另一个铜头铁臂也有这个问题，有的能挡有的又不能挡会被 boss 干到，说白了就是玩家都不知道，只能猜或者背板。不过值得庆幸的是，这种问题只有在杨戬和大圣上才比较明显，其他的小怪偶尔还是能猜出来的，比如打大头，大头有一招手在地上放冲击波，前三下频率较快可以铜头铁臂，但是最后一下蓄力最久是无法防御的。</li>
+</ul>
+<h4 id="闪避机制"><a href="#闪避机制" class="headerlink" title="闪避机制"></a>闪避机制</h4><p>完美闪避的时停，总觉得可以做但是没必要的。想想一般的时停是干什么，猎天使魔女的魔女时间，塞尔达林克时间，幽灵行者时停之后调整身位和方向进行攻击和冲刺。</p>
+<p>所以时停是意味着做些什么？窗口期疯狂输出！在有限的时间完成更多的操作！</p>
+<p>回到黑神话的背板，假如 boss 的三连战每隔 0.5s 来一下，0 ，500ms，1000ms。正常来说，玩家只需要在 -100ms，350ms，890ms 的时候按闪避键就能触发完美闪避。但是如果是完美闪避，由于时停机制，timing 就会变成 -100ms，850ms，1890ms</p>
+<p>背板主要就是俩个部分，玩家知道 BOSS 会用几刀，以及几刀之间的节奏感，但是如果上一次躲避时使用的完美闪避和翻滚不一致，就好导致下一刀躲避时机的不一样，timing 时刻都会不一样。</p>
+<p>闪避机能过强的问题？</p>
+<p>卖点：BOSS 战斗演出。不鼓励先手，因为一直</p>
+<p>受击的状态机</p>
+<p>从受击状态恢复到 <code>idle</code> 状态，需要的时间会比较大。但是反常的是，在人物动作中已经基本回归 idle 状态了，但是一直摁闪避，也会有很多时间才能执行这个动作。</p>
+<p>小骊龙的例子，只用跳跃基本解决不了长段的砸地攻击</p>
+<h1 id="剧情"><a href="#剧情" class="headerlink" title="剧情"></a>剧情</h1><p>聊聊是否忠于原著，以及斗战神。</p>
+<p>剧情与《西游记》的割裂感，主旨上：《西游记》是经典的仙是因为做好事踏实修炼，而不是出身，比如常常有普通的妖精呈现做好事、修善行、最后得道成仙，是一套比较传统且正能量的故事内核。很容易看出，黑神话明显不是《西游记》的精神续作，《西游记》只是黑神话在背景设定 or 故事 or 人物形象上的参考。</p>
+<h1 id="关卡"><a href="#关卡" class="headerlink" title="关卡"></a>关卡</h1><p>在没有地图 UI 的情况下，放大了空气墙的问题</p>
+<p>空气墙，引申至制作游戏的流水线设计。先搭建白模，在白模上放置美术素材，or 先美术构景，在美术景色的基础上放置可行的路径和不可行的空气墙</p>
+<p>感官：做得很矛盾，没有一个统一的标准。什么是可行的，什么是不可行的。在构图中存在隐性引导的地方，实际上是无法走的。</p>
+<p><strong>对于一个物体的可供性没有明确的定义</strong>，比如栅栏，在多数情况下，是阻挡你前行的标志，但是在有些地方又有路能走。</p>
+<h3 id="引导"><a href="#引导" class="headerlink" title="引导"></a>引导</h3><h4 id="没有引导"><a href="#没有引导" class="headerlink" title="没有引导"></a>没有引导</h4><p>开放式的地图缺少 landmark，不仅仅是每一个大场景的 landmark，比如如果想的话，雷音寺一路向上，做一个往上的结构，或者浮屠塔地标</p>
+<p>场景里缺少明显的视觉引导</p>
+<ul>
+<li>该不该去探索，有隐藏道具，有隐形引导，比如门的设计；矛盾的是空气墙</li>
+</ul>
+<p><img src="https://uniquestudio.feishu.cn/space/api/box/stream/download/asynccode/?code=YmM2NjdkOGJmYzY0MWEzNmNiYmZhY2FhZjU2MTljMTBfNWY1MUtheDE4RWFZdmIwdmZVaEpCODN2VFV5Nk1JZWJfVG9rZW46S0xzUmI2ampnb0ZEc0h4M3QxdWNoZ3A2bm9mXzE3MzExNTkzMzA6MTczMTE2MjkzMF9WNA" alt="img"></p>
+<h4 id="错误引导"><a href="#错误引导" class="headerlink" title="错误引导"></a>错误引导</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1AE4m1d7XT/?p=2&share_source=copy_web&vd_source=ecda795ed1d6a440931616c9ec1ce2e1&t=387">老鼠指路</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1AE4m1d7XT/?p=25&share_source=copy_web&vd_source=ecda795ed1d6a440931616c9ec1ce2e1&t=1460">八戒指路</a></li>
+<li>打完广谋后的有引申出两条路，但其实都走不了。</li>
+</ul>
+<h3 id="激发探索欲？"><a href="#激发探索欲？" class="headerlink" title="激发探索欲？"></a>激发探索欲？</h3><p>通过各种场景的明暗、高低、远近、疏密、颜色，暗示关卡的故事和动线</p>
+<h1 id="美术"><a href="#美术" class="headerlink" title="美术"></a>美术</h1><p>虚幻 5 的渲染特性，亮的地方特别亮，暗的地方特别暗。和奇怪的打光的突变。原因似乎是漫反射参数调的依托，社区的补丁可以明显改善这个问题</p>
+<h1 id="系统"><a href="#系统" class="headerlink" title="系统"></a>系统</h1><p>道具（泡物，任务道具，装备，强化材料）的给法</p>
+<ul>
+<li>到底是网游还是单机？在获得道具时，想想一般的网游和单机游戏是怎么做的。<ul>
+<li>网游&#x2F;单机道具分级别：<ul>
+<li>基本道具直接给，比如游戏货币，最拉的装备，必需品</li>
+<li>高级道具随缘给，一刀 999 的武器，红名武器，奢侈品</li>
+<li>特殊道具流程给，比如回城卷轴，高级区域通行证，必需品</li>
+<li>隐藏道具，与全收集相关，在任务支线或者隐藏地图中出现，可选品</li>
+</ul>
+</li>
+<li>喜欢我黑猴全收集的物品要打某种类型的小怪，概率掉落。并且玩家是不知道什么怪会掉什么东西的设计吗？</li>
+</ul>
+</li>
+</ul>
+<h1 id="背板"><a href="#背板" class="headerlink" title="背板"></a>背板</h1><p>定义：什么样子的是背板？排除法，目押不了的。</p>
+<p>背板是没问题的，游戏需要一定的背板，比如全靠目押直接通关也不好，而且对于一些重要 boss 需要让玩家背一些板来拉长游戏时间，或者加深玩家的印象，比如最后一个 BOSS 打两三个小时，对 BOSS 的所有抬手收手了如指掌也是成就感的一种体现</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1XdWoeNEGf/?share_source=copy_web&vd_source=ecda795ed1d6a440931616c9ec1ce2e1&t=110">喜欢我小黄龙的零帧抬手冲刺么</a></li>
+<li>喜欢我杨戬的快慢刀➕无前摇射线么</li>
+</ul>
+<p>如何给不同的敌人设定背板的度？小怪 &gt; 精英怪 &gt; BOSS &gt; 章节 BOSS，可以背板的招式越来越高 </p>
+<p>体感上可目押的招数占比感觉是     90，70，60 会比较正常。</p>
+<p>但我个人感觉黑神话很多战斗的设计是反直觉的，所以需要特别去记忆和背板</p>
+<blockquote>
+<p>游戏的内在统一的设计。 地图设计，战斗设计，人物机能，剧情世界观。</p>
+<p>因为角色不能跳跃，所以大树洞交错的树枝设计才有意义，这也是内在统一的，角色防御方式只有翻滚和举盾，相对 boss 的攻击都有明显抬手，精力管理与 boss 攻击频率也是内在统一的，死后掉魂与背景设定也是内在统一的，正是这些细节设定方面处处自洽，黑魂才足以被认为是一个系类的代表</p>
+</blockquote>
+<h1 id="长处"><a href="#长处" class="headerlink" title="长处"></a>长处</h1><p>堆料，极致的堆料。</p>
+<p>对于一些宏大场景的构图，很棒。对于一些小场景的像是在实地旅游参观，但是游戏性和真实性之间的平衡个人认为没有做好</p>
+<p>本地化满分，比如在 CG 开头，用戏剧式的鼓点和响板先声夺人，唢呐作为背景音乐很震撼</p>
+<p>数值，不愧是做网游的公司，能保证游戏前中后期的怪物数值和玩家的提升曲线是基本符合的</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/11/10/%E8%81%8A%E8%81%8A%E6%B8%B8%E6%88%8FUGC/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="syhxzzz">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="syhxzzz's Blog">
+      <meta itemprop="description" content="每天不知道都在干什么，在写一些乱七八糟的东西，包括但不限于Unity、游戏策划、CS技术">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | syhxzzz's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/11/10/%E8%81%8A%E8%81%8A%E6%B8%B8%E6%88%8FUGC/" class="post-title-link" itemprop="url">post</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2024-11-09 21:34:04 / Modified: 13:35:11" itemprop="dateCreated datePublished" datetime="2024-11-09T21:34:04Z">2024-11-09</time>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan: </span>
+    
+    <a title="post" href="/2024/11/10/%E8%81%8A%E8%81%8A%E6%B8%B8%E6%88%8FUGC/#SOHUCS" itemprop="discussionUrl">
+      <span id="sourceId::901ca5f5db0ad63e4adf45eac460710f" class="cy_cmt_count" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="游戏-UGC-是什么"><a href="#游戏-UGC-是什么" class="headerlink" title="游戏 UGC 是什么"></a><strong>游戏</strong> <strong>UGC</strong> <strong>是什么</strong></h1><h2 id="UGC-是啥"><a href="#UGC-是啥" class="headerlink" title="UGC 是啥"></a><strong>UGC</strong> <strong>是啥</strong></h2><p>User Generated Content，即用户创造的内容，平常你刷的抖音、微博和小红书的内容都来自 UGC。</p>
+<h2 id="为什么需要游戏-UGC-工具"><a href="#为什么需要游戏-UGC-工具" class="headerlink" title="为什么需要游戏 UGC 工具"></a><strong>为什么需要游戏</strong> <strong>UGC</strong> <strong>工具</strong></h2><p>因为游戏 UGC 重要，所以生产工具重要。</p>
+<ol>
+<li>UGC 是一种经过验证的商业模式</li>
+</ol>
+<p>“UGC 是各个内容行业商业模式上的顶上明珠，文字、音频、视频行业已经把这个模式证明了 ” 这是 Laya 创始人谢成鸿的观察，其他内容行业能给游戏 UGC 一个参照。</p>
+<ol>
+<li>内容从 PGC 独大走向 P、UGC 并存是一种趋势</li>
+</ol>
+<p>文字、图片、视频等内容载体，都经历了这样的过程，比如从 Netflix 到抖音的兴起。</p>
+<ol>
+<li>好的内容可以从 UGC 出来</li>
+</ol>
+<p>比如 Dota 源于魔兽争霸的一张 MOD 地图，CS 同样也是基于半条命 MOD 制作出来的衍生品。</p>
+<ol>
+<li>创造作为一种玩法，给玩家更强代入感</li>
+</ol>
+<p>现在很多游戏提供捏脸系统，如《永劫无间》；再比如家园系统，让玩家能建房子种地等，都是一种提供更强代入感的方式。</p>
+<ol>
+<li>UGC 是让游戏保持生命力的手段</li>
+</ol>
+<p>在好的创作生态下，内容能自我成长；游戏策划的脑洞是有限的，但是玩家的想法是无限的</p>
+<p>如果把 UGC 放在游戏设计中，那么一个好的 UGC 游戏模式，很可能会使得游戏充满活力、经久不衰。</p>
+<h2 id="游戏-UGC-工具定义的狭义与广义"><a href="#游戏-UGC-工具定义的狭义与广义" class="headerlink" title="游戏 UGC 工具定义的狭义与广义"></a><strong>游戏</strong> <strong>UGC</strong> <strong>工具定义的狭义与广义</strong></h2><ol>
+<li>狭义</li>
+</ol>
+<p>如果按狭义来说，能制作游戏的，门槛低到小白也能上手的编辑器软件才叫游戏 ugc 工具</p>
+<ol>
+<li>广义</li>
+</ol>
+<p>但是像我的世界一样能在游戏里创造算不算游戏 UGC 工具？</p>
+<p>拼图创景这种游戏化方式做体素模型的工具算不算游戏 UGC 工具？</p>
+<p>乐高积木能用来做过家家游戏，算不算游戏 UGC 工具？</p>
+<p>在我看来，他们也算；因此我把游戏 UGC 工具的定义外延了：</p>
+<p>能创作游戏的，或者能用游戏化的方式做出游戏组成元素的产品，不论它看起来是游戏、玩具还是什么东西，只要门槛低，都算游戏 UGC 工具。</p>
+<h2 id="UGC-游戏类型"><a href="#UGC-游戏类型" class="headerlink" title="UGC 游戏类型"></a>UGC 游戏类型</h2><h3 id="关卡编辑器"><a href="#关卡编辑器" class="headerlink" title="关卡编辑器"></a>关卡编辑器</h3><p><img src="https://uniquestudio.feishu.cn/space/api/box/stream/download/asynccode/?code=NDhlYTgxYTkzZmRmNzk4NTIzN2Q2NzBmMWE2MmZlNzZfZmM0cGhNcUI0cUVPb1Fmek5sNE92dFJGU1ZYUEFzY05fVG9rZW46SDlnbWJRZ045b3FadFR4MkhQNmNoaWVMbldlXzE3MzExNTkyMzg6MTczMTE2MjgzOF9WNA" alt="img"></p>
+<h3 id="MOD"><a href="#MOD" class="headerlink" title="MOD"></a>MOD</h3><p><img src="https://uniquestudio.feishu.cn/space/api/box/stream/download/asynccode/?code=NzAxYmIxMzBlZGFmMzlhNzk5MjAwYTlhMGIxYjU2ODhfazd1dWtBV3pMNnpkZUZuSHkyelBnSjRTaUU3Tnd5SlpfVG9rZW46WWJ2TGJjdDBkb01tY0J4Y0RrWmN3NHBibnJlXzE3MzExNTkyMzg6MTczMTE2MjgzOF9WNA" alt="img"></p>
+<p>缺陷：版权问题？所有权问题？分成？</p>
+<p><img src="https://uniquestudio.feishu.cn/space/api/box/stream/download/asynccode/?code=NzY0MDEzNzhkMDlkN2I2NzQyNzdkNmEwOWFiNTc0NzZfb0xySERqWnNGaVVnUWRxQTM5Wmhad092UEVQZWFsdk1fVG9rZW46WkdqQ2I1REh0b0VlUHZ4eUZXSWNDbEVUbkdiXzE3MzExNTkyMzg6MTczMTE2MjgzOF9WNA" alt="img"></p>
+<p>《我的世界》&#x3D; 沙盒 + MOD</p>
+<p>《我的世界》的开发者 Notch 早年曾公开宣布放弃对 MOD 社区和私人服务器的任何干涉。</p>
+<p>游戏卖给微软之后，大型商业公司当然不能允许这样的规则存在，但微软对这一块的规定也是比较积极的，例如<a target="_blank" rel="noopener" href="https://account.mojang.com/terms#commercial">《Minecraft 商业使用指南》</a>中关于 MOD 与服务器收费的的这部分：</p>
+<p><img src="https://uniquestudio.feishu.cn/space/api/box/stream/download/asynccode/?code=ZWJmODUxOTBhOWFmNzUyZTM1MWE3MWJlOTA5OTE2MThfMTNENHA2SVAzU2t2M01OMm4wS1lMaXk2cXVTMHJoY1VfVG9rZW46RHdFS2JsaTNhb0EwYmN4UW96RWNsM0Zybk9oXzE3MzExNTkyMzg6MTczMTE2MjgzOF9WNA" alt="img"></p>
+<h3 id="沙盒建造"><a href="#沙盒建造" class="headerlink" title="沙盒建造"></a>沙盒建造</h3><p>如<a target="_blank" rel="noopener" href="https://store.steampowered.com/app/346010/Besiege/">《Besiege》</a></p>
+<p><img src="https://uniquestudio.feishu.cn/space/api/box/stream/download/asynccode/?code=NGU3N2VmNjQ4YWIyNjA5ODRhZDcxYmRhOGZhZTQxY2VfYVdTcEJ1UzBjUW8yZkhjekJOY0dybWJBa25rUXV6bEtfVG9rZW46V3Y2UGJGMFFzb2s0czN4bFhDbmNrM1RGblljXzE3MzExNTkyMzg6MTczMTE2MjgzOF9WNA" alt="img"></p>
+<h3 id="创作工具-x3D-gt-游戏平台？"><a href="#创作工具-x3D-gt-游戏平台？" class="headerlink" title="创作工具 &#x3D;&gt; 游戏平台？"></a>创作工具 &#x3D;&gt; 游戏平台？</h3><h1 id="《蛋仔派对》"><a href="#《蛋仔派对》" class="headerlink" title="《蛋仔派对》"></a>《蛋仔派对》</h1><p>派对游戏的情感连接</p>
+<p>and</p>
+<p>游戏中的创作欲望与社交连接</p>
+<p>编辑器是 UGC 的第一步</p>
+<p><img src="https://uniquestudio.feishu.cn/space/api/box/stream/download/asynccode/?code=NjEwMzQ4NGU3M2YyY2RiNTRlYWZmYjU3MTcxOWQ5OTlfaEFIUXhCTm5VWkxoY0Z0SjhVcGhJSG1xMWc0YXJCV3RfVG9rZW46VEVDWWJKUXFYb3Nwbkh4MkJJemN2NzJIbldkXzE3MzExNTkyMzg6MTczMTE2MjgzOF9WNA" alt="img"></p>
+<p><img src="https://uniquestudio.feishu.cn/space/api/box/stream/download/asynccode/?code=MTI0ZmUyZWUwOTFmYTM5NzdiYmYyNjRjNWRiYjBkYzBfRUM0eVQ2OXRBMDBqWFFvQXp3WDQxZVZDNEJtUFQzM3BfVG9rZW46UDlMN2IwQWNrbzJDNm54S2RmU2NEZE1hbkNiXzE3MzExNTkyMzg6MTczMTE2MjgzOF9WNA" alt="img"></p>
+<p>看到种草笔记 &#x3D;&gt; 进入种草地图 &#x3D;&gt; 游玩过程中进行记录 &#x3D;&gt; 游玩后发布自己的种草贴 &#x3D;&gt; 得到关注 </p>
+<p><img src="https://uniquestudio.feishu.cn/space/api/box/stream/download/asynccode/?code=ODNjM2U2NWQyNGIzMmRhMjcxOTNiNDYyNDgxNGRkYTVfZHo3dzVHdE9hMEhhQUFUZjV6ZDB2bTZ1TW13dmRiNzRfVG9rZW46T2VydmJQdldvb0k4MXR4bDgxTGNjWFhVbmZiXzE3MzExNTkyMzg6MTczMTE2MjgzOF9WNA" alt="img"></p>
+<p><img src="https://uniquestudio.feishu.cn/space/api/box/stream/download/asynccode/?code=MWEyODc5YTE4ZDM0NzcyZjg3MTg2MGJiYzk0N2U2YWNfdDFvU2thTHp5VWdZekVjaWZBWnlsZnNndnM3NmJtYnBfVG9rZW46TlFKb2I5SnRBbzdQc054bUJDWGNYQ3pCbmhiXzE3MzExNTkyMzg6MTczMTE2MjgzOF9WNA" alt="img"></p>
+<h3 id="地图编辑器，也不是所有人都能做成游戏平台"><a href="#地图编辑器，也不是所有人都能做成游戏平台" class="headerlink" title="地图编辑器，也不是所有人都能做成游戏平台"></a>地图编辑器，也不是所有人都能做成游戏平台</h3><p>高内聚，低耦合？</p>
+<p>足够的新手引导？</p>
+<p>和人交流的创意工坊？</p>
+<p>足够的激励机制？</p>
+<h1 id="《王者荣耀》"><a href="#《王者荣耀》" class="headerlink" title="《王者荣耀》"></a>《王者荣耀》</h1><p>moba 游戏的 UGC 从哪开始？</p>
+<p><a target="_blank" rel="noopener" href="https://pvp.qq.com/cp/a20190716wxtg/">王者地图编辑器</a></p>
+<p>玩法？美术？地图？</p>
+<p><img src="https://uniquestudio.feishu.cn/space/api/box/stream/download/asynccode/?code=YzhiMjM1OTc1NmIxOGQwMzgxNGJjNjUxMTE4YzBjNzFfQ2JwZlJlUWxQd05yaXJkU2NtSFk3TUxYTWM3dUhwTFdfVG9rZW46TjVZOWJ1T0p1b0lOYU14RkEwMGNlNXE2bnlnXzE3MzExNTkyMzg6MTczMTE2MjgzOF9WNA" alt="img"></p>
+<p><img src="https://uniquestudio.feishu.cn/space/api/box/stream/download/asynccode/?code=ZGY1NjhjZmUyZTQwOGIyZDNlOTJiNDE3ZmE1ODdmZWNfWVEzZ1FWS1ZYZW8zVGx2M1RmOGR1ckU3RkVocnNha2NfVG9rZW46SjVGeGJOanNqb2lBSHV4U0VDTWN0d1JWblNmXzE3MzExNTkyMzg6MTczMTE2MjgzOF9WNA" alt="img"></p>
+<p>美术 UGC </p>
+<p><img src="https://uniquestudio.feishu.cn/space/api/box/stream/download/asynccode/?code=NzZhMDE5YWJlYzExNDk1ODI4YTMzMDNmNTMwMzAwY2FfSmpPUmw1cWdvbEJDaU5nMTk3dm5KT3MycWxBeTZiS1VfVG9rZW46SkZsOGJQNVlvb0loWm54dGZodmNveE5wblZiXzE3MzExNTkyMzg6MTczMTE2MjgzOF9WNA" alt="img"></p>
+<blockquote>
+<p>类似活动虽是面向全体玩家，但实际的投稿要求，还是需要玩家具备一定的绘画和技术门槛。玩家需要以统一的 PS 模板，输出包括整体展示图、设计细节、三维图在内的设计。将其形容为专业用户生产内容（PUGC），或许更为合适。</p>
+<p>此外，被选出的玩家设计并非拿来就用。从原画设计到正式实装，王者会与原作者进行沟通，在充分尊重玩家设计和意愿的基础上，根据游戏标准与规范进行二次设计。</p>
+</blockquote>
+<h1 id="《Roblox》"><a href="#《Roblox》" class="headerlink" title="《Roblox》"></a>《Roblox》</h1><p><a target="_blank" rel="noopener" href="https://www.roblox.com/home">Roblox </a>的商业模式：</p>
+<p><strong>做 游戏&#x2F;工具 不如做平台</strong></p>
+<ol>
+<li>主打儿童娱乐，面向 9-12 岁儿童的数字社区，有着巨大的用户基数并且他们不对游戏性有着过高的期待</li>
+<li>低成本高回报的运营模式，游戏制作交给游戏开发者，社区仅仅负责提供平台和游戏制作工具<ol>
+<li>Roblox 允许创作者使用 Lua 语言进行编程，相比其他编程语言，Lua 更容易掌握；</li>
+<li>官方提供游戏开发引擎 Roblox Studio，studio 中包含大量的预设内容与简单的脚本语言，</li>
+<li></li>
+<li><img src="https://uniquestudio.feishu.cn/space/api/box/stream/download/asynccode/?code=ZGQxNGIyZWQxMzcyNzE4ZjFmZmI1NmU2OGU1MzQ3NWJfOGhyRDJVSFpKZ1F5NkJHUVFyQVl4ZUFtY0RvMHc4M1dfVG9rZW46QU56S2JjcGREb3JlRjV4MDJ4WWNCOURqbkVjXzE3MzExNTkyMzg6MTczMTE2MjgzOF9WNA" alt="img"></li>
+<li>roblox studia 开发界面</li>
+<li>利用 Roblox 开发多人游戏更为简易</li>
+<li>官方在培训课程上投入了大量资源，从线下的夏令营活动、教程书籍到线上的编程课程。</li>
+</ol>
+</li>
+<li>中心化的管理模式。集中对游戏进行管理，发行虚拟货币 Robux</li>
+</ol>
+<p>对比《Minecraft》的商业模式，游戏服务器<a target="_blank" rel="noopener" href="https://play.mcmod.cn/">无统一平台管理</a></p>
+<h1 id="《逆水寒手游》"><a href="#《逆水寒手游》" class="headerlink" title="《逆水寒手游》"></a>《逆水寒手游》</h1><p><strong>UGC</strong> <strong>是玩法之一而不是玩法全部</strong></p>
+<h3 id="摄影系统面向视频玩家"><a href="#摄影系统面向视频玩家" class="headerlink" title="摄影系统面向视频玩家"></a>摄影系统面向视频玩家</h3><p>正常的录视频逻辑：</p>
+<p>你就会知道要在游戏里先开录屏，再按动作，再把动作栏关掉，再通过录屏卡出一个帅气的动作，再到视频剪辑里调整动作速度，弄出慢动作……这套流程相当麻烦，而且调节慢动作的时候，往往会损失流畅度和清晰度，还得补帧。</p>
+<p><img src="https://uniquestudio.feishu.cn/space/api/box/stream/download/asynccode/?code=Y2E2YjdjYmE0MTQ5Nzc0Y2RlMTFjMjE0Y2RiMDY0Zjdfa2FtVEtYRVhWN3BCR3dtTm5TclF2UUNYcGhHbzdJWWhfVG9rZW46VFo1S2JVZzF6b0NwdER4UU1JeWN1V2lGbkJoXzE3MzExNTkyMzg6MTczMTE2MjgzOF9WNA" alt="img"></p>
+<h3 id="换装系统面向“暖暖玩家”"><a href="#换装系统面向“暖暖玩家”" class="headerlink" title="换装系统面向“暖暖玩家”"></a>换装系统面向“暖暖玩家”</h3><p>还有，游戏里的每个装扮配件，玩家都是可以自己调节位置参数的，比如下面这位玩家，头上的耳机是用游泳圈背饰调出来的，墨镜是用黑色眼罩调出来的，身上的“辣妹露脐装”是用一个人参背包调出来的。</p>
+<p><img src="https://uniquestudio.feishu.cn/space/api/box/stream/download/asynccode/?code=Y2MyNDA1YjY1MzhiNDc4MjdkM2JhZjAwYTAxZWZmZGJfV2xySWx0aFhGV3hCWHdtOUZRaUdacHlzdjM5amp2dlZfVG9rZW46VTYzcmI1SVd4b25reXR4SjFNRGN2ZzBmbk1kXzE3MzExNTkyMzg6MTczMTE2MjgzOF9WNA" alt="img"></p>
+<p>例如图中的女装，是官方出的版本：</p>
+<p>玩家直接给染色成 Y2K 辣妹、KPOP 偶像：</p>
+<p><img src="https://uniquestudio.feishu.cn/space/api/box/stream/download/asynccode/?code=MTFmMjVhMjNhNDFiNGRjNzM5ODE2NzQzNzNkOWU0MDZfd25YeUNFYkhwTG5ZZnVOTDVWTENXSWZKQUJHWjdrUzZfVG9rZW46TVNaMmJSeFVTb2x4MDN4RnJxbWNYU1F0bllnXzE3MzExNTkyMzg6MTczMTE2MjgzOF9WNA" alt="img"  /><img src="https://uniquestudio.feishu.cn/space/api/box/stream/download/asynccode/?code=OWZmYTAyYzBjYWM2MWU3NDg4MGE4ZDNmYTkzODZiZWZfUFVYd254MFhjelQ1T25CeUdBWWxVb0Z6WHAwY3c4YVNfVG9rZW46SW91cWJGUGRzb3NCT2N4dlZORWNyUUlpbklmXzE3MzExNTkyMzg6MTczMTE2MjgzOF9WNA" alt="img" style="zoom:33%;" /></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/11/10/%E4%BB%8E%E6%94%B6%E8%A7%86%E7%8E%87%E7%9A%84%E8%A7%92%E5%BA%A6%EF%BC%8C%E4%BB%80%E4%B9%88%E6%A0%B7%E7%9A%84%E7%94%B5%E7%AB%9E%E6%AF%94%E8%B5%9B%E5%8F%97%E5%88%B0%E6%AC%A2%E8%BF%8E/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="syhxzzz">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="syhxzzz's Blog">
+      <meta itemprop="description" content="每天不知道都在干什么，在写一些乱七八糟的东西，包括但不限于Unity、游戏策划、CS技术">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | syhxzzz's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/11/10/%E4%BB%8E%E6%94%B6%E8%A7%86%E7%8E%87%E7%9A%84%E8%A7%92%E5%BA%A6%EF%BC%8C%E4%BB%80%E4%B9%88%E6%A0%B7%E7%9A%84%E7%94%B5%E7%AB%9E%E6%AF%94%E8%B5%9B%E5%8F%97%E5%88%B0%E6%AC%A2%E8%BF%8E/" class="post-title-link" itemprop="url">post</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2024-11-09 21:31:53 / Modified: 13:33:50" itemprop="dateCreated datePublished" datetime="2024-11-09T21:31:53Z">2024-11-09</time>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan: </span>
+    
+    <a title="post" href="/2024/11/10/%E4%BB%8E%E6%94%B6%E8%A7%86%E7%8E%87%E7%9A%84%E8%A7%92%E5%BA%A6%EF%BC%8C%E4%BB%80%E4%B9%88%E6%A0%B7%E7%9A%84%E7%94%B5%E7%AB%9E%E6%AF%94%E8%B5%9B%E5%8F%97%E5%88%B0%E6%AC%A2%E8%BF%8E/#SOHUCS" itemprop="discussionUrl">
+      <span id="sourceId::c9782213dc6ec3293528051ee914f4ef" class="cy_cmt_count" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="从收视率的角度，什么样的电竞比赛受到欢迎"><a href="#从收视率的角度，什么样的电竞比赛受到欢迎" class="headerlink" title="从收视率的角度，什么样的电竞比赛受到欢迎"></a>从收视率的角度，什么样的电竞比赛受到欢迎</h2><p>观众都是什么人？玩家为基本盘，并且大多数为轻度玩家</p>
+<h4 id="时长"><a href="#时长" class="headerlink" title="时长"></a>时长</h4><h4 id="视角"><a href="#视角" class="headerlink" title="视角"></a>视角</h4><p><img src="https://uniquestudio.feishu.cn/space/api/box/stream/download/asynccode/?code=YzM2MWQ5NzNhYWNiNDBiZjMzM2NiYWJhNTQ3ZWRiMDFfQTUzVkFDQW1EcVU5Qkp1c09GQWJ1dHVad1dpVDIwY1pfVG9rZW46VkJ2QmI1cHNYb1hFeEl4UjBBdGNmQWUxbkRlXzE3MzExNTkwNjI6MTczMTE2MjY2Ml9WNA" alt="img"></p>
+<p><img src="https://uniquestudio.feishu.cn/space/api/box/stream/download/asynccode/?code=ZGVjOGQ3ZGMxYjZiNjg5MDU0NmRiZDg1Yzk5YjQxMDVfdk5CYkJrd3doOW1ucVExOUFDMGNZelliNk1ZdFFIRTJfVG9rZW46U3FsVGJVM0xqb2g4emh4OWtNUmNCdlhxbk1oXzE3MzExNTkwNjI6MTczMTE2MjY2Ml9WNA" alt="img"></p>
+<h4 id="FPS-游戏视角"><a href="#FPS-游戏视角" class="headerlink" title="FPS 游戏视角"></a>FPS 游戏视角</h4><table>
+<thead>
+<tr>
+<th>传统游玩视角</th>
+<th>全局上帝视角</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>观众熟悉</td>
+<td>陌生</td>
+</tr>
+<tr>
+<td>信息不全，看不明白</td>
+<td>能够看到都发生了什么</td>
+</tr>
+</tbody></table>
+<p>能让人看明白的视角不好看，好看的视角看不明白</p>
+<p>采用选手个人镜头，让观众自己选？更偏向于集锦，并且意味着没有解说，还是看不明白，或者很难传播？</p>
+<p><img src="https://uniquestudio.feishu.cn/space/api/box/stream/download/asynccode/?code=NDM5NzdlN2FlMmEwZTExNmMxNDJlNzE1OWU4ZTljNGZfbmNqS0NYclZSTHEzWWtOUG1IV1NMV2g1OVIwU1gwVDlfVG9rZW46Vm54cWJQcU1hb3dzeWx4aXU1aWNhRGVtbnRnXzE3MzExNTkwNjI6MTczMTE2MjY2Ml9WNA" alt="img"></p>
+<p><img src="https://uniquestudio.feishu.cn/space/api/box/stream/download/asynccode/?code=YWY4ZDgxYTMwOTllYjIxZWUxZjAwYzdlZjFmYWUwYTJfTlNxWElRVkxGaXczQVlyVGNHaFd3TzZPOE5EaGMzZFJfVG9rZW46RW9iV2J6Ymdub1J3WDR4WUNiY2NQeTM1bjZmXzE3MzExNTkwNjI6MTczMTE2MjY2Ml9WNA" alt="img"></p>
+<ul>
+<li>比赛节奏</li>
+</ul>
+<p>游戏节奏有紧有松，在团战或者交战时，很难完全看懂发生的前因经过结尾，经常需要解说和导播配合进行复盘</p>
+<p>解说 观众 导播</p>
+<ul>
+<li>可复制性</li>
+</ul>
+<p>普通观众能否复刻比赛的名场面，难度如何？</p>
+<ul>
+<li>Moba：勉强还行？我上我也行？</li>
+<li>FPS：神经枪碰碰运气行？</li>
+<li>RTS：实在不行</li>
+</ul>
+<p><img src="https://uniquestudio.feishu.cn/space/api/box/stream/download/asynccode/?code=MDdlNzIzNjFiZTM1ODg5YjI1MDJmNDc5NWMyNjgzODlfSDZ2NjBWaHUzWVhqZDl3ODZNaG15NWltbXdIdlpkZlhfVG9rZW46WlprdGI4Nmc1b28zb1B4dUVmb2NIU0FIblVlXzE3MzExNTkwNjI6MTczMTE2MjY2Ml9WNA" alt="img"></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/11/10/%E5%A6%82%E4%BD%95%E4%B8%BA%E7%AB%9E%E6%8A%80%E6%AF%94%E8%B5%9B%E6%8E%92%E5%90%8D/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="syhxzzz">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="syhxzzz's Blog">
+      <meta itemprop="description" content="每天不知道都在干什么，在写一些乱七八糟的东西，包括但不限于Unity、游戏策划、CS技术">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | syhxzzz's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/11/10/%E5%A6%82%E4%BD%95%E4%B8%BA%E7%AB%9E%E6%8A%80%E6%AF%94%E8%B5%9B%E6%8E%92%E5%90%8D/" class="post-title-link" itemprop="url">post</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2024-11-09 21:29:15 / Modified: 13:33:18" itemprop="dateCreated datePublished" datetime="2024-11-09T21:29:15Z">2024-11-09</time>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan: </span>
+    
+    <a title="post" href="/2024/11/10/%E5%A6%82%E4%BD%95%E4%B8%BA%E7%AB%9E%E6%8A%80%E6%AF%94%E8%B5%9B%E6%8E%92%E5%90%8D/#SOHUCS" itemprop="discussionUrl">
+      <span id="sourceId::a21a8f96c869e5bfae5554745e728cd8" class="cy_cmt_count" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -280,44 +752,6 @@
 <li>在重大赛事时，从各大联赛赛区内收集前N号种子，进行分组进行组内循环赛或者瑞士轮或者双败赛制</li>
 <li>最后得到前八名进行淘汰赛。</li>
 </ul>
-<h2 id="从收视率的角度，什么样的运动受到欢迎"><a href="#从收视率的角度，什么样的运动受到欢迎" class="headerlink" title="从收视率的角度，什么样的运动受到欢迎"></a>从收视率的角度，什么样的运动受到欢迎</h2><p>观众都是什么人？玩家为基本盘，并且大多数为轻度玩家</p>
-<h4 id="时长"><a href="#时长" class="headerlink" title="时长"></a>时长</h4><h4 id="视角"><a href="#视角" class="headerlink" title="视角"></a>视角</h4><p><img src="https://uniquestudio.feishu.cn/space/api/box/stream/download/asynccode/?code=YzM2MWQ5NzNhYWNiNDBiZjMzM2NiYWJhNTQ3ZWRiMDFfQTUzVkFDQW1EcVU5Qkp1c09GQWJ1dHVad1dpVDIwY1pfVG9rZW46VkJ2QmI1cHNYb1hFeEl4UjBBdGNmQWUxbkRlXzE3MzExNTkwNjI6MTczMTE2MjY2Ml9WNA" alt="img"></p>
-<p><img src="https://uniquestudio.feishu.cn/space/api/box/stream/download/asynccode/?code=ZGVjOGQ3ZGMxYjZiNjg5MDU0NmRiZDg1Yzk5YjQxMDVfdk5CYkJrd3doOW1ucVExOUFDMGNZelliNk1ZdFFIRTJfVG9rZW46U3FsVGJVM0xqb2g4emh4OWtNUmNCdlhxbk1oXzE3MzExNTkwNjI6MTczMTE2MjY2Ml9WNA" alt="img"></p>
-<h4 id="FPS-游戏视角"><a href="#FPS-游戏视角" class="headerlink" title="FPS 游戏视角"></a>FPS 游戏视角</h4><table>
-<thead>
-<tr>
-<th>传统游玩视角</th>
-<th>全局上帝视角</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>观众熟悉</td>
-<td>陌生</td>
-</tr>
-<tr>
-<td>信息不全，看不明白</td>
-<td>能够看到都发生了什么</td>
-</tr>
-</tbody></table>
-<p>能让人看明白的视角不好看，好看的视角看不明白</p>
-<p>采用选手个人镜头，让观众自己选？更偏向于集锦，并且意味着没有解说，还是看不明白，或者很难传播？</p>
-<p><img src="https://uniquestudio.feishu.cn/space/api/box/stream/download/asynccode/?code=NDM5NzdlN2FlMmEwZTExNmMxNDJlNzE1OWU4ZTljNGZfbmNqS0NYclZSTHEzWWtOUG1IV1NMV2g1OVIwU1gwVDlfVG9rZW46Vm54cWJQcU1hb3dzeWx4aXU1aWNhRGVtbnRnXzE3MzExNTkwNjI6MTczMTE2MjY2Ml9WNA" alt="img"></p>
-<p><img src="https://uniquestudio.feishu.cn/space/api/box/stream/download/asynccode/?code=YWY4ZDgxYTMwOTllYjIxZWUxZjAwYzdlZjFmYWUwYTJfTlNxWElRVkxGaXczQVlyVGNHaFd3TzZPOE5EaGMzZFJfVG9rZW46RW9iV2J6Ymdub1J3WDR4WUNiY2NQeTM1bjZmXzE3MzExNTkwNjI6MTczMTE2MjY2Ml9WNA" alt="img"></p>
-<ul>
-<li>比赛节奏</li>
-</ul>
-<p>游戏节奏有紧有松，在团战或者交战时，很难完全看懂发生的前因经过结尾，经常需要解说和导播配合进行复盘</p>
-<p>解说 观众 导播</p>
-<ul>
-<li>可复制性</li>
-</ul>
-<p>普通观众能否复刻比赛的名场面，难度如何？</p>
-<ul>
-<li>Moba：勉强还行？我上我也行？</li>
-<li>FPS：神经枪碰碰运气行？</li>
-<li>RTS：实在不行</li>
-</ul>
-<p><img src="https://uniquestudio.feishu.cn/space/api/box/stream/download/asynccode/?code=MDdlNzIzNjFiZTM1ODg5YjI1MDJmNDc5NWMyNjgzODlfSDZ2NjBWaHUzWVhqZDl3ODZNaG15NWltbXdIdlpkZlhfVG9rZW46WlprdGI4Nmc1b28zb1B4dUVmb2NIU0FIblVlXzE3MzExNTkwNjI6MTczMTE2MjY2Ml9WNA" alt="img"></p>
 
       
     </div>
@@ -918,108 +1352,9 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/01/%E8%A7%92%E8%89%B2%E8%AE%BE%E8%AE%A1%EF%BC%9A%E5%A6%82%E4%BD%95%E4%B8%BAMoba%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%E8%A7%92%E8%89%B2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="syhxzzz">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="syhxzzz's Blog">
-      <meta itemprop="description" content="每天不知道都在干什么，在写一些乱七八糟的东西，包括但不限于Unity、游戏策划、CS技术">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | syhxzzz's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/09/01/%E8%A7%92%E8%89%B2%E8%AE%BE%E8%AE%A1%EF%BC%9A%E5%A6%82%E4%BD%95%E4%B8%BAMoba%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%E8%A7%92%E8%89%B2/" class="post-title-link" itemprop="url">角色设计：如何为Moba游戏设计角色</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-09-01 10:24:50" itemprop="dateCreated datePublished" datetime="2022-09-01T10:24:50Z">2022-09-01</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-03-29 06:48:38" itemprop="dateModified" datetime="2023-03-29T06:48:38Z">2023-03-29</time>
-    </span>
-
-  
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Changyan: </span>
-    
-    <a title="角色设计：如何为Moba游戏设计角色" href="/2022/09/01/%E8%A7%92%E8%89%B2%E8%AE%BE%E8%AE%A1%EF%BC%9A%E5%A6%82%E4%BD%95%E4%B8%BAMoba%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%E8%A7%92%E8%89%B2/#SOHUCS" itemprop="discussionUrl">
-      <span id="sourceId::525d67fe38299005f687524d375b164e" class="cy_cmt_count" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="角色设计方法论"><a href="#角色设计方法论" class="headerlink" title="角色设计方法论"></a>角色设计方法论</h1><p>《英雄联盟》宇宙是通过英雄来贯穿的，虽然其实它并不是以角色为核心的游戏</p>
-<h2 id="三种驱动方式"><a href="#三种驱动方式" class="headerlink" title="三种驱动方式"></a>三种驱动方式</h2><ol>
-<li>设计驱动</li>
-<li>故事驱动</li>
-<li>艺术驱动</li>
-</ol>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/09/01/%E8%A7%92%E8%89%B2%E8%AE%BE%E8%AE%A1%EF%BC%9A%E5%A6%82%E4%BD%95%E4%B8%BAMoba%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%E8%A7%92%E8%89%B2/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+  </nav>
 
 </div>
   </main>

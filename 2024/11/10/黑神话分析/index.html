@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.13.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="战斗核心概念：棍势和棍势点。 在战斗中通过轻攻击积攒棍势，在和敌人周旋时闪避获得棍势，丹药和衣服的联动也可以积攒棍势。重击 or 识破消耗棍势点获得更强大的伤害和冲击力。 怎么消耗重击？对应招式的最终技能打出。立棍，劈棍，戳棍。 劈棍，最主流的设计！聊聊为什么最主流的劈棍打不中人。  前三个豆释放时，在冲刺时有朝向追踪，但是在打出时没有朝向追踪 敌人的碰撞模型和受击模型之间的 gap，导致空棍。玩">
+<meta property="og:type" content="article">
+<meta property="og:title" content="黑神话分析">
+<meta property="og:url" content="http://example.com/2024/11/10/%E9%BB%91%E7%A5%9E%E8%AF%9D%E5%88%86%E6%9E%90/index.html">
+<meta property="og:site_name" content="syhxzzz&#39;s Blog">
+<meta property="og:description" content="战斗核心概念：棍势和棍势点。 在战斗中通过轻攻击积攒棍势，在和敌人周旋时闪避获得棍势，丹药和衣服的联动也可以积攒棍势。重击 or 识破消耗棍势点获得更强大的伤害和冲击力。 怎么消耗重击？对应招式的最终技能打出。立棍，劈棍，戳棍。 劈棍，最主流的设计！聊聊为什么最主流的劈棍打不中人。  前三个豆释放时，在冲刺时有朝向追踪，但是在打出时没有朝向追踪 敌人的碰撞模型和受击模型之间的 gap，导致空棍。玩">
+<meta property="og:locale">
+<meta property="og:image" content="https://uniquestudio.feishu.cn/space/api/box/stream/download/asynccode/?code=YmM2NjdkOGJmYzY0MWEzNmNiYmZhY2FhZjU2MTljMTBfNWY1MUtheDE4RWFZdmIwdmZVaEpCODN2VFV5Nk1JZWJfVG9rZW46S0xzUmI2ampnb0ZEc0h4M3QxdWNoZ3A2bm9mXzE3MzExNTkzMzA6MTczMTE2MjkzMF9WNA">
+<meta property="article:published_time" content="2024-11-09T21:35:42.000Z">
+<meta property="article:modified_time" content="2024-11-09T13:35:47.421Z">
+<meta property="article:author" content="syhxzzz">
+<meta property="article:tag" content="Unity，游戏策划、CS、Archlinux">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://uniquestudio.feishu.cn/space/api/box/stream/download/asynccode/?code=YmM2NjdkOGJmYzY0MWEzNmNiYmZhY2FhZjU2MTljMTBfNWY1MUtheDE4RWFZdmIwdmZVaEpCODN2VFV5Nk1JZWJfVG9rZW46S0xzUmI2ampnb0ZEc0h4M3QxdWNoZ3A2bm9mXzE3MzExNTkzMzA6MTczMTE2MjkzMF9WNA">
+
+
+<link rel="canonical" href="http://example.com/2024/11/10/%E9%BB%91%E7%A5%9E%E8%AF%9D%E5%88%86%E6%9E%90/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh","comments":true,"permalink":"http://example.com/2024/11/10/%E9%BB%91%E7%A5%9E%E8%AF%9D%E5%88%86%E6%9E%90/","path":"2024/11/10/黑神话分析/","title":"黑神话分析"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>黑神话分析 | syhxzzz's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">syhxzzz's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">加权弱鸡、代码蠢材、策划新手</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%88%98%E6%96%97"><span class="nav-number">1.</span> <span class="nav-text">战斗</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%88%98%E6%96%97%E6%9C%BA%E5%88%B6%E7%9A%84%E5%89%B2%E8%A3%82%E6%84%9F"><span class="nav-number">1.0.1.</span> <span class="nav-text">战斗机制的割裂感</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%98%E8%BA%AB%E3%80%81%E5%8C%96%E8%BA%AB"><span class="nav-number">1.0.1.1.</span> <span class="nav-text">变身、化身</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%BB%E5%8A%A8%E6%8A%80%E8%83%BD"><span class="nav-number">1.0.1.2.</span> <span class="nav-text">主动技能</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%97%AA%E9%81%BF%E6%9C%BA%E5%88%B6"><span class="nav-number">1.0.1.3.</span> <span class="nav-text">闪避机制</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%A7%E6%83%85"><span class="nav-number">2.</span> <span class="nav-text">剧情</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%B3%E5%8D%A1"><span class="nav-number">3.</span> <span class="nav-text">关卡</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%95%E5%AF%BC"><span class="nav-number">3.0.1.</span> <span class="nav-text">引导</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B2%A1%E6%9C%89%E5%BC%95%E5%AF%BC"><span class="nav-number">3.0.1.1.</span> <span class="nav-text">没有引导</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%94%99%E8%AF%AF%E5%BC%95%E5%AF%BC"><span class="nav-number">3.0.1.2.</span> <span class="nav-text">错误引导</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%BF%80%E5%8F%91%E6%8E%A2%E7%B4%A2%E6%AC%B2%EF%BC%9F"><span class="nav-number">3.0.2.</span> <span class="nav-text">激发探索欲？</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BE%8E%E6%9C%AF"><span class="nav-number">4.</span> <span class="nav-text">美术</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F"><span class="nav-number">5.</span> <span class="nav-text">系统</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%83%8C%E6%9D%BF"><span class="nav-number">6.</span> <span class="nav-text">背板</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%95%BF%E5%A4%84"><span class="nav-number">7.</span> <span class="nav-text">长处</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">syhxzzz</p>
+  <div class="site-description" itemprop="description">每天不知道都在干什么，在写一些乱七八糟的东西，包括但不限于Unity、游戏策划、CS技术</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/11/10/%E9%BB%91%E7%A5%9E%E8%AF%9D%E5%88%86%E6%9E%90/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="syhxzzz">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="syhxzzz's Blog">
+      <meta itemprop="description" content="每天不知道都在干什么，在写一些乱七八糟的东西，包括但不限于Unity、游戏策划、CS技术">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="黑神话分析 | syhxzzz's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          黑神话分析
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2024-11-09 21:35:42 / Modified: 13:35:47" itemprop="dateCreated datePublished" datetime="2024-11-09T21:35:42Z">2024-11-09</time>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan: </span>
+    
+    <a title="黑神话分析" href="/2024/11/10/%E9%BB%91%E7%A5%9E%E8%AF%9D%E5%88%86%E6%9E%90/#SOHUCS" itemprop="discussionUrl">
+      <span id="sourceId::54d0dc548e8eda1406752256fe3e94e8" class="cy_cmt_count" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="战斗"><a href="#战斗" class="headerlink" title="战斗"></a>战斗</h1><p>核心概念：棍势和棍势点。</p>
+<p>在战斗中通过轻攻击积攒棍势，在和敌人周旋时闪避获得棍势，丹药和衣服的联动也可以积攒棍势。<strong>重击 or 识破</strong>消耗棍势点获得更强大的伤害和冲击力。</p>
+<p>怎么消耗重击？对应招式的最终技能打出。立棍，劈棍，戳棍。</p>
+<p>劈棍，最主流的设计！聊聊为什么最主流的劈棍打不中人。</p>
+<ul>
+<li>前三个豆释放时，在冲刺时有朝向追踪，但是在打出时没有朝向追踪</li>
+<li>敌人的碰撞模型和受击模型之间的 gap，导致空棍。玩家被敌人的碰撞模型阻挡时，会认为此时发动攻击可以命中，但是受击模型可能有可能在攻击范围之外，导致空棍，点名百眼魔君</li>
+<li>我霸体呢？在空中转体两圈半直接被扣篮，What can I say</li>
+<li>劈棍的识破，动作最帅的一集。介绍劈棍<ul>
+<li>劈棍使用方式，在轻攻击（X）前四段，使用重击按键（Y），此时会进行切棍式。在切棍式时，如果敌方此时在攻击你，会进入识破状态，会进入霸体和免伤状态，并返还一次棍式点。之后可以选择继续释放斩棍式或者结束释放。</li>
+<li>收益：900%的攻击倍率，和斩棍式的巨大的冲击力 &#x3D;&#x3D;&#x3D; 棍式三豆蓄力</li>
+<li>乍看一下收益很高，但是其实识破的触发方式是很苛刻的，需要先进行轻击状态，轻击前四下攻击的每一段的特定的某几帧的窗口期中，才可以进行识破判定，所以识破的使用不是实时的，所以又回到了背板。</li>
+</ul>
+</li>
+</ul>
+<h3 id="战斗机制的割裂感"><a href="#战斗机制的割裂感" class="headerlink" title="战斗机制的割裂感"></a>战斗机制的割裂感</h3><h4 id="变身、化身"><a href="#变身、化身" class="headerlink" title="变身、化身"></a>变身、化身</h4><p>不是很懂为什么要做这个？跟正常战斗割裂感很强，变身变成了独立的一套技能释放，但是和本体之间没有任何互动</p>
+<ul>
+<li>降低难度？那我为什么不把这个工作量拿去优化手感，比如上文的劈棍锁定。实在不行把复活丢早一点，而不是留在二周末才能获得</li>
+</ul>
+<h4 id="主动技能"><a href="#主动技能" class="headerlink" title="主动技能"></a>主动技能</h4><ul>
+<li>定身术的设计<ul>
+<li>其实不太喜欢定身术和隐身的设计，游戏的技能可以是高风险高回报，比如蓄力一个很厉害的冲击波，或者稳定的增幅比如给自己加 buff，或者像将翻滚变成闪身的强化。</li>
+<li>但是定身术就是让对方不能动，只能挨打，隐身是有一长段的休息期，喝药磕丹蓄力能可以做。在设计上都是低风险高回报。游科是知道这个的，所以设计了很长的 CD 和蓝条的限制，过于依赖这两个就是释放技能，等待技能 CD 再打的回合制游戏，变身和化身本质上延长自己的攻击回合和防止在等 CD 时暴毙。</li>
+<li>定身术的奇怪的介绍</li>
+<li>完美定身：在敌人出手的瞬间使用，延长定身时长</li>
+<li>大部分敌人出手后霸体，不会被定身，并且浪费 CD 和蓝量</li>
+<li>但是对于玩家来说，没有足够的信息来判定，只能多试，或者在还没出招时使用，那我完美定身的意义呢？</li>
+</ul>
+</li>
+<li>另一个铜头铁臂也有这个问题，有的能挡有的又不能挡会被 boss 干到，说白了就是玩家都不知道，只能猜或者背板。不过值得庆幸的是，这种问题只有在杨戬和大圣上才比较明显，其他的小怪偶尔还是能猜出来的，比如打大头，大头有一招手在地上放冲击波，前三下频率较快可以铜头铁臂，但是最后一下蓄力最久是无法防御的。</li>
+</ul>
+<h4 id="闪避机制"><a href="#闪避机制" class="headerlink" title="闪避机制"></a>闪避机制</h4><p>完美闪避的时停，总觉得可以做但是没必要的。想想一般的时停是干什么，猎天使魔女的魔女时间，塞尔达林克时间，幽灵行者时停之后调整身位和方向进行攻击和冲刺。</p>
+<p>所以时停是意味着做些什么？窗口期疯狂输出！在有限的时间完成更多的操作！</p>
+<p>回到黑神话的背板，假如 boss 的三连战每隔 0.5s 来一下，0 ，500ms，1000ms。正常来说，玩家只需要在 -100ms，350ms，890ms 的时候按闪避键就能触发完美闪避。但是如果是完美闪避，由于时停机制，timing 就会变成 -100ms，850ms，1890ms</p>
+<p>背板主要就是俩个部分，玩家知道 BOSS 会用几刀，以及几刀之间的节奏感，但是如果上一次躲避时使用的完美闪避和翻滚不一致，就好导致下一刀躲避时机的不一样，timing 时刻都会不一样。</p>
+<p>闪避机能过强的问题？</p>
+<p>卖点：BOSS 战斗演出。不鼓励先手，因为一直</p>
+<p>受击的状态机</p>
+<p>从受击状态恢复到 <code>idle</code> 状态，需要的时间会比较大。但是反常的是，在人物动作中已经基本回归 idle 状态了，但是一直摁闪避，也会有很多时间才能执行这个动作。</p>
+<p>小骊龙的例子，只用跳跃基本解决不了长段的砸地攻击</p>
+<h1 id="剧情"><a href="#剧情" class="headerlink" title="剧情"></a>剧情</h1><p>聊聊是否忠于原著，以及斗战神。</p>
+<p>剧情与《西游记》的割裂感，主旨上：《西游记》是经典的仙是因为做好事踏实修炼，而不是出身，比如常常有普通的妖精呈现做好事、修善行、最后得道成仙，是一套比较传统且正能量的故事内核。很容易看出，黑神话明显不是《西游记》的精神续作，《西游记》只是黑神话在背景设定 or 故事 or 人物形象上的参考。</p>
+<h1 id="关卡"><a href="#关卡" class="headerlink" title="关卡"></a>关卡</h1><p>在没有地图 UI 的情况下，放大了空气墙的问题</p>
+<p>空气墙，引申至制作游戏的流水线设计。先搭建白模，在白模上放置美术素材，or 先美术构景，在美术景色的基础上放置可行的路径和不可行的空气墙</p>
+<p>感官：做得很矛盾，没有一个统一的标准。什么是可行的，什么是不可行的。在构图中存在隐性引导的地方，实际上是无法走的。</p>
+<p><strong>对于一个物体的可供性没有明确的定义</strong>，比如栅栏，在多数情况下，是阻挡你前行的标志，但是在有些地方又有路能走。</p>
+<h3 id="引导"><a href="#引导" class="headerlink" title="引导"></a>引导</h3><h4 id="没有引导"><a href="#没有引导" class="headerlink" title="没有引导"></a>没有引导</h4><p>开放式的地图缺少 landmark，不仅仅是每一个大场景的 landmark，比如如果想的话，雷音寺一路向上，做一个往上的结构，或者浮屠塔地标</p>
+<p>场景里缺少明显的视觉引导</p>
+<ul>
+<li>该不该去探索，有隐藏道具，有隐形引导，比如门的设计；矛盾的是空气墙</li>
+</ul>
+<p><img src="https://uniquestudio.feishu.cn/space/api/box/stream/download/asynccode/?code=YmM2NjdkOGJmYzY0MWEzNmNiYmZhY2FhZjU2MTljMTBfNWY1MUtheDE4RWFZdmIwdmZVaEpCODN2VFV5Nk1JZWJfVG9rZW46S0xzUmI2ampnb0ZEc0h4M3QxdWNoZ3A2bm9mXzE3MzExNTkzMzA6MTczMTE2MjkzMF9WNA" alt="img"></p>
+<h4 id="错误引导"><a href="#错误引导" class="headerlink" title="错误引导"></a>错误引导</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1AE4m1d7XT/?p=2&share_source=copy_web&vd_source=ecda795ed1d6a440931616c9ec1ce2e1&t=387">老鼠指路</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1AE4m1d7XT/?p=25&share_source=copy_web&vd_source=ecda795ed1d6a440931616c9ec1ce2e1&t=1460">八戒指路</a></li>
+<li>打完广谋后的有引申出两条路，但其实都走不了。</li>
+</ul>
+<h3 id="激发探索欲？"><a href="#激发探索欲？" class="headerlink" title="激发探索欲？"></a>激发探索欲？</h3><p>通过各种场景的明暗、高低、远近、疏密、颜色，暗示关卡的故事和动线</p>
+<h1 id="美术"><a href="#美术" class="headerlink" title="美术"></a>美术</h1><p>虚幻 5 的渲染特性，亮的地方特别亮，暗的地方特别暗。和奇怪的打光的突变。原因似乎是漫反射参数调的依托，社区的补丁可以明显改善这个问题</p>
+<h1 id="系统"><a href="#系统" class="headerlink" title="系统"></a>系统</h1><p>道具（泡物，任务道具，装备，强化材料）的给法</p>
+<ul>
+<li>到底是网游还是单机？在获得道具时，想想一般的网游和单机游戏是怎么做的。<ul>
+<li>网游&#x2F;单机道具分级别：<ul>
+<li>基本道具直接给，比如游戏货币，最拉的装备，必需品</li>
+<li>高级道具随缘给，一刀 999 的武器，红名武器，奢侈品</li>
+<li>特殊道具流程给，比如回城卷轴，高级区域通行证，必需品</li>
+<li>隐藏道具，与全收集相关，在任务支线或者隐藏地图中出现，可选品</li>
+</ul>
+</li>
+<li>喜欢我黑猴全收集的物品要打某种类型的小怪，概率掉落。并且玩家是不知道什么怪会掉什么东西的设计吗？</li>
+</ul>
+</li>
+</ul>
+<h1 id="背板"><a href="#背板" class="headerlink" title="背板"></a>背板</h1><p>定义：什么样子的是背板？排除法，目押不了的。</p>
+<p>背板是没问题的，游戏需要一定的背板，比如全靠目押直接通关也不好，而且对于一些重要 boss 需要让玩家背一些板来拉长游戏时间，或者加深玩家的印象，比如最后一个 BOSS 打两三个小时，对 BOSS 的所有抬手收手了如指掌也是成就感的一种体现</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1XdWoeNEGf/?share_source=copy_web&vd_source=ecda795ed1d6a440931616c9ec1ce2e1&t=110">喜欢我小黄龙的零帧抬手冲刺么</a></li>
+<li>喜欢我杨戬的快慢刀➕无前摇射线么</li>
+</ul>
+<p>如何给不同的敌人设定背板的度？小怪 &gt; 精英怪 &gt; BOSS &gt; 章节 BOSS，可以背板的招式越来越高 </p>
+<p>体感上可目押的招数占比感觉是     90，70，60 会比较正常。</p>
+<p>但我个人感觉黑神话很多战斗的设计是反直觉的，所以需要特别去记忆和背板</p>
+<blockquote>
+<p>游戏的内在统一的设计。 地图设计，战斗设计，人物机能，剧情世界观。</p>
+<p>因为角色不能跳跃，所以大树洞交错的树枝设计才有意义，这也是内在统一的，角色防御方式只有翻滚和举盾，相对 boss 的攻击都有明显抬手，精力管理与 boss 攻击频率也是内在统一的，死后掉魂与背景设定也是内在统一的，正是这些细节设定方面处处自洽，黑魂才足以被认为是一个系类的代表</p>
+</blockquote>
+<h1 id="长处"><a href="#长处" class="headerlink" title="长处"></a>长处</h1><p>堆料，极致的堆料。</p>
+<p>对于一些宏大场景的构图，很棒。对于一些小场景的像是在实地旅游参观，但是游戏性和真实性之间的平衡个人认为没有做好</p>
+<p>本地化满分，比如在 CG 开头，用戏剧式的鼓点和响板先声夺人，唢呐作为背景音乐很震撼</p>
+<p>数值，不愧是做网游的公司，能保证游戏前中后期的怪物数值和玩家的提升曲线是基本符合的</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/11/10/%E8%81%8A%E8%81%8A%E6%B8%B8%E6%88%8FUGC/" rel="prev" title="post">
+                  <i class="fa fa-chevron-left"></i> post
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="SOHUCS" sid="54d0dc548e8eda1406752256fe3e94e8"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">syhxzzz</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+<script class="next-config" data-name="changyan" type="application/json">{"enable":true,"appid":15673102339,"appkey":"SYHXSQQ0508"}</script>
+<script src="/js/third-party/comments/changyan.js"></script>
+
+</body>
+</html>
