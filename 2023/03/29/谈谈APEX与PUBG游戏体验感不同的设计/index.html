@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.13.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="共性首先说说共同点，两者都是FPS类大逃杀游戏(吃鸡)，玩家们被分成若干个小队，在地图上搜取资源，面临着会缩小的安全区，玩家们被迫进行战略转移并面临厮杀，直至剩下最后一个活着的小队。根据游戏设计课中总结的点，先给出这些游戏的大致特点。特点：  明确的赌注 无处不在的威胁 时间压力 不断升高的危险">
+<meta property="og:type" content="article">
+<meta property="og:title" content="谈谈APEX与PUBG游戏体验感不同的设计">
+<meta property="og:url" content="http://example.com/2023/03/29/%E8%B0%88%E8%B0%88APEX%E4%B8%8EPUBG%E6%B8%B8%E6%88%8F%E4%BD%93%E9%AA%8C%E6%84%9F%E4%B8%8D%E5%90%8C%E7%9A%84%E8%AE%BE%E8%AE%A1/index.html">
+<meta property="og:site_name" content="syhxzzz&#39;s Blog">
+<meta property="og:description" content="共性首先说说共同点，两者都是FPS类大逃杀游戏(吃鸡)，玩家们被分成若干个小队，在地图上搜取资源，面临着会缩小的安全区，玩家们被迫进行战略转移并面临厮杀，直至剩下最后一个活着的小队。根据游戏设计课中总结的点，先给出这些游戏的大致特点。特点：  明确的赌注 无处不在的威胁 时间压力 不断升高的危险">
+<meta property="og:locale">
+<meta property="og:image" content="http://example.com/2023/03/29/%E8%B0%88%E8%B0%88APEX%E4%B8%8EPUBG%E6%B8%B8%E6%88%8F%E4%BD%93%E9%AA%8C%E6%84%9F%E4%B8%8D%E5%90%8C%E7%9A%84%E8%AE%BE%E8%AE%A1/%E8%B0%88%E8%B0%88APEX%E4%B8%8EPUBG%E6%B8%B8%E6%88%8F%E4%BD%93%E9%AA%8C%E6%84%9F%E4%B8%8D%E5%90%8C%E7%9A%84%E8%AE%BE%E8%AE%A1/APEX%E8%A1%80%E6%9D%A1%E6%8A%A4%E7%94%B2%E6%9D%A1.png">
+<meta property="og:image" content="http://example.com/2023/03/29/%E8%B0%88%E8%B0%88APEX%E4%B8%8EPUBG%E6%B8%B8%E6%88%8F%E4%BD%93%E9%AA%8C%E6%84%9F%E4%B8%8D%E5%90%8C%E7%9A%84%E8%AE%BE%E8%AE%A1/%E8%B0%88%E8%B0%88APEX%E4%B8%8EPUBG%E6%B8%B8%E6%88%8F%E4%BD%93%E9%AA%8C%E6%84%9F%E4%B8%8D%E5%90%8C%E7%9A%84%E8%AE%BE%E8%AE%A1/PUBG%E8%83%BD%E9%87%8F%E6%9D%A1%E8%A1%80%E6%9D%A1.png">
+<meta property="og:image" content="http://example.com/2023/03/29/%E8%B0%88%E8%B0%88APEX%E4%B8%8EPUBG%E6%B8%B8%E6%88%8F%E4%BD%93%E9%AA%8C%E6%84%9F%E4%B8%8D%E5%90%8C%E7%9A%84%E8%AE%BE%E8%AE%A1/%E8%B0%88%E8%B0%88APEX%E4%B8%8EPUBG%E6%B8%B8%E6%88%8F%E4%BD%93%E9%AA%8C%E6%84%9F%E4%B8%8D%E5%90%8C%E7%9A%84%E8%AE%BE%E8%AE%A1/APEX%E5%A4%8D%E5%88%B6%E5%99%A8.png">
+<meta property="og:image" content="http://example.com/2023/03/29/%E8%B0%88%E8%B0%88APEX%E4%B8%8EPUBG%E6%B8%B8%E6%88%8F%E4%BD%93%E9%AA%8C%E6%84%9F%E4%B8%8D%E5%90%8C%E7%9A%84%E8%AE%BE%E8%AE%A1/%E8%B0%88%E8%B0%88APEX%E4%B8%8EPUBG%E6%B8%B8%E6%88%8F%E4%BD%93%E9%AA%8C%E6%84%9F%E4%B8%8D%E5%90%8C%E7%9A%84%E8%AE%BE%E8%AE%A1/%E5%91%BC%E5%90%B8%E6%9D%A1.png">
+<meta property="article:published_time" content="2023-03-29T06:48:38.000Z">
+<meta property="article:modified_time" content="2023-03-29T06:48:38.000Z">
+<meta property="article:author" content="syhxzzz">
+<meta property="article:tag" content="游戏策划，游戏设计">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2023/03/29/%E8%B0%88%E8%B0%88APEX%E4%B8%8EPUBG%E6%B8%B8%E6%88%8F%E4%BD%93%E9%AA%8C%E6%84%9F%E4%B8%8D%E5%90%8C%E7%9A%84%E8%AE%BE%E8%AE%A1/%E8%B0%88%E8%B0%88APEX%E4%B8%8EPUBG%E6%B8%B8%E6%88%8F%E4%BD%93%E9%AA%8C%E6%84%9F%E4%B8%8D%E5%90%8C%E7%9A%84%E8%AE%BE%E8%AE%A1/APEX%E8%A1%80%E6%9D%A1%E6%8A%A4%E7%94%B2%E6%9D%A1.png">
+
+
+<link rel="canonical" href="http://example.com/2023/03/29/%E8%B0%88%E8%B0%88APEX%E4%B8%8EPUBG%E6%B8%B8%E6%88%8F%E4%BD%93%E9%AA%8C%E6%84%9F%E4%B8%8D%E5%90%8C%E7%9A%84%E8%AE%BE%E8%AE%A1/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh","comments":true,"permalink":"http://example.com/2023/03/29/%E8%B0%88%E8%B0%88APEX%E4%B8%8EPUBG%E6%B8%B8%E6%88%8F%E4%BD%93%E9%AA%8C%E6%84%9F%E4%B8%8D%E5%90%8C%E7%9A%84%E8%AE%BE%E8%AE%A1/","path":"2023/03/29/谈谈APEX与PUBG游戏体验感不同的设计/","title":"谈谈APEX与PUBG游戏体验感不同的设计"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>谈谈APEX与PUBG游戏体验感不同的设计 | syhxzzz's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">syhxzzz's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">加权弱鸡、代码蠢材、策划新手</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B1%E6%80%A7"><span class="nav-number">1.</span> <span class="nav-text">共性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%98%8E%E7%A1%AE%E7%9A%84%E8%B5%8C%E6%B3%A8%EF%BC%9A"><span class="nav-number">1.1.</span> <span class="nav-text">明确的赌注：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%A0%E5%A4%84%E4%B8%8D%E5%9C%A8%E7%9A%84%E5%A8%81%E8%83%81%EF%BC%9A"><span class="nav-number">1.2.</span> <span class="nav-text">无处不在的威胁：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%B6%E9%97%B4%E5%8E%8B%E5%8A%9B%EF%BC%9A"><span class="nav-number">1.3.</span> <span class="nav-text">时间压力：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8D%E6%96%AD%E5%8D%87%E9%AB%98%E7%9A%84%E9%A3%8E%E9%99%A9%EF%BC%9A"><span class="nav-number">1.4.</span> <span class="nav-text">不断升高的风险：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%A4%E6%AC%BE%E6%B8%B8%E6%88%8F%E7%9A%84%E4%B8%8D%E5%90%8C%E4%B9%8B%E5%A4%84%EF%BC%9APUBG%E9%87%8D%E8%BF%98%E5%8E%9F%E7%8E%B0%E5%AE%9E%E3%80%81APEX%E9%87%8D%E6%B8%B8%E6%88%8F%E4%BD%93%E9%AA%8C"><span class="nav-number">1.5.</span> <span class="nav-text">两款游戏的不同之处：PUBG重还原现实、APEX重游戏体验</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8E%A9%E5%AE%B6%E6%89%80%E8%83%BD%E5%A4%9F%E8%BF%9B%E8%A1%8C%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="nav-number">2.</span> <span class="nav-text">玩家所能够进行的操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E8%A7%84%E6%93%8D%E4%BD%9C"><span class="nav-number">2.1.</span> <span class="nav-text">常规操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%9F%E8%83%BD%E6%93%8D%E4%BD%9C"><span class="nav-number">2.2.</span> <span class="nav-text">功能操作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%B0%E5%9B%BE%E8%AE%BE%E8%AE%A1%E5%8F%8A%E5%85%B6%E8%B5%84%E6%BA%90%E5%88%86%E5%B8%83"><span class="nav-number">3.</span> <span class="nav-text">地图设计及其资源分布</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9D%9EFPS%E4%BC%A0%E7%BB%9F%E6%9E%AA%E6%A2%B0%E5%A4%96%E7%9A%84%E6%9C%BA%E5%88%B6%E8%AE%BE%E8%AE%A1"><span class="nav-number">4.</span> <span class="nav-text">非FPS传统枪械外的机制设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9E%AA%E6%A2%B0%E8%AE%BE%E8%AE%A1%E5%8F%8A%E5%AD%90%E5%BC%B9%E9%85%8D%E7%BD%AE"><span class="nav-number">5.</span> <span class="nav-text">枪械设计及子弹配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E7%82%B9%E7%82%B9%E6%80%9D%E8%80%83"><span class="nav-number">6.</span> <span class="nav-text">一点点思考</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93%E7%AF%87"><span class="nav-number">7.</span> <span class="nav-text">总结篇</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">syhxzzz</p>
+  <div class="site-description" itemprop="description">每天不知道都在干什么，在写一些乱七八糟的东西，包括但不限于Unity、游戏策划、CS技术</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/03/29/%E8%B0%88%E8%B0%88APEX%E4%B8%8EPUBG%E6%B8%B8%E6%88%8F%E4%BD%93%E9%AA%8C%E6%84%9F%E4%B8%8D%E5%90%8C%E7%9A%84%E8%AE%BE%E8%AE%A1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="syhxzzz">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="syhxzzz's Blog">
+      <meta itemprop="description" content="每天不知道都在干什么，在写一些乱七八糟的东西，包括但不限于Unity、游戏策划、CS技术">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="谈谈APEX与PUBG游戏体验感不同的设计 | syhxzzz's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          谈谈APEX与PUBG游戏体验感不同的设计
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2023-03-29 06:48:38" itemprop="dateCreated datePublished" datetime="2023-03-29T06:48:38Z">2023-03-29</time>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan: </span>
+    
+    <a title="谈谈APEX与PUBG游戏体验感不同的设计" href="/2023/03/29/%E8%B0%88%E8%B0%88APEX%E4%B8%8EPUBG%E6%B8%B8%E6%88%8F%E4%BD%93%E9%AA%8C%E6%84%9F%E4%B8%8D%E5%90%8C%E7%9A%84%E8%AE%BE%E8%AE%A1/#SOHUCS" itemprop="discussionUrl">
+      <span id="sourceId::8959756f1201031a640c52546dad24bf" class="cy_cmt_count" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="共性"><a href="#共性" class="headerlink" title="共性"></a>共性</h2><p>首先说说共同点，两者都是FPS类大逃杀游戏(吃鸡)，玩家们被分成若干个小队，在地图上搜取资源，面临着会缩小的安全区，玩家们被迫进行战略转移并面临厮杀，直至剩下最后一个活着的小队。<br>根据游戏设计课中总结的点，先给出这些游戏的大致特点。<br>特点：</p>
+<ol>
+<li>明确的赌注</li>
+<li>无处不在的威胁</li>
+<li>时间压力</li>
+<li>不断升高的危险</li>
+</ol>
+<span id="more"></span>
+
+<h3 id="明确的赌注："><a href="#明确的赌注：" class="headerlink" title="明确的赌注："></a>明确的赌注：</h3><p>所有队伍的胜利条件都是相同的：存活直到其他队伍的玩家全部死去</p>
+<h3 id="无处不在的威胁："><a href="#无处不在的威胁：" class="headerlink" title="无处不在的威胁："></a>无处不在的威胁：</h3><p>玩家们基本上以单人作战、或者单队作战，而地图十分广阔且基本上没有十分稳定安全区，因为地图上少有绝对安全的地点，并且毒圈会逼迫玩家抛弃掉现有的点位，而去寻找下一个点位。</p>
+<h3 id="时间压力："><a href="#时间压力：" class="headerlink" title="时间压力："></a>时间压力：</h3><p>毒圈的伤害会越来越高，并且随着毒圈的缩小，你可能遇到的敌人将会是在战斗中存活下来的佼佼者，他们的装备也会是集众盒而聚集出来的好装备，并且你离他们也会更加的近。</p>
+<h3 id="不断升高的风险："><a href="#不断升高的风险：" class="headerlink" title="不断升高的风险："></a>不断升高的风险：</h3><p>此处即指遇到的敌人会更多，敌人也会更加强大；也有如果此时失败，玩家将失去此前收集了很久的装备，和已经投入的时间。</p>
+<h3 id="两款游戏的不同之处：PUBG重还原现实、APEX重游戏体验"><a href="#两款游戏的不同之处：PUBG重还原现实、APEX重游戏体验" class="headerlink" title="两款游戏的不同之处：PUBG重还原现实、APEX重游戏体验"></a>两款游戏的不同之处：PUBG重还原现实、APEX重游戏体验</h3><p>注：此处的PUBG针对的是FPS模式</p>
+<h2 id="玩家所能够进行的操作"><a href="#玩家所能够进行的操作" class="headerlink" title="玩家所能够进行的操作"></a>玩家所能够进行的操作</h2><h3 id="常规操作"><a href="#常规操作" class="headerlink" title="常规操作"></a>常规操作</h3><p>最基本的且两个游戏都有的操作是相同的移动、跳跃和射击。<br>移动模式上，两款游戏没有太大的不同，奔跑和跳跃。APEX中对于攀爬设计的更加灵活，一是APEX攀爬时的速度和可攀爬的高度会更加的快和高；二是PUBG中在攀爬时，必须要尽可能贴近攀爬物再按跳跃键，否则不会触发。并且APEX在进入奔跑状态一段时间后使用下蹲键时，会进入滑铲状态，此时会减少人物的碰撞体积，可以进行穿越低掩体，躲避子弹的效果，并且再使用跳跃就能够以滑铲的速度作为初速度进行跳跃效果，会更加灵活，更难以被击杀。<br>并且在APEX中，没有下落伤害，这使得玩家可以灵活借助地图的纵深进行移动，在战斗中有了更多的选择。    </p>
+<p>在PUBG中，人物可以保持匍匐状态，此时若有一定高度的掩体，人物基本上很难被发现。如果有决赛圈在麦田或者草地时，基本上是看不到站着的人的，因为都趴着当LYB了。倘若有人头铁不趴着，趴在地上的LYB一梭子就直接把他秒了，被秒的人甚至都发现不了LYB，为了消除玩家都选择匍匐动作而放弃战斗的玩法，APEX直接消除纳什均衡，选择删除匍匐动作，逼迫玩家进行战斗。</p>
+<p>作战距离不同时，玩家主要依赖的射击模式不同。<br> 常用的射击模式：</p>
+<table>
+<thead>
+<tr>
+<th>瞄准方式对应的最佳作战距离\游戏</th>
+<th>APEX</th>
+<th>PUBG</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>腰射</td>
+<td>0～20</td>
+<td>0～5</td>
+</tr>
+<tr>
+<td>肩射</td>
+<td>无</td>
+<td>5～20</td>
+</tr>
+<tr>
+<td>开镜射击</td>
+<td>10以上</td>
+<td>10以上</td>
+</tr>
+</tbody></table>
+<p>(注：这里只是一个大致的范围，不同的枪械和不同的地形会对不同距离下瞄准方式产生影响)</p>
+<p>其中腰射作为最简单易用的瞄准方式，其没有速度惩罚(<em>使用时会降低移速</em>)，使得玩家在使用腰射时更加灵活。APEX给腰射增加准确度，更多在于鼓励玩家使用腰射，在作战时灵活使用身法。</p>
+<p>在有一定的作战距离后，一般都使用开镜射击，不过PUBG中枪械的后座力普遍高于APEX。</p>
+<h3 id="功能操作"><a href="#功能操作" class="headerlink" title="功能操作"></a>功能操作</h3><p>PUBG中玩家的角色都是属性相同的白板；APEX中玩家所选择的角色，会有职业的分类拥有着不同的特性效果和增益手段。除此之外，每个角色拥有自己的独立的一套技能组，在战略支援、跑路、守点上有着不同的强项，这种做法能够为玩家找到非FPS射击的新的兴趣点，比如机器人的超长大勾，瓦尔基里的长距离飞行；也能使玩家在角色之间的配合中，发掘新的玩法，给玩家以探索空间。</p>
+<h2 id="地图设计及其资源分布"><a href="#地图设计及其资源分布" class="headerlink" title="地图设计及其资源分布"></a>地图设计及其资源分布</h2><ul>
+<li><p>地图设计上</p>
+<ul>
+<li><p>APEX的地图偏小，PUBG的地图偏大，而且在大的资源点之间的距离较长，故PUBG非常依赖载具进行转移，需要考虑到转点带来的影响时，明显是PUBG需要考虑的更多。</p>
+</li>
+<li><p>由于APEX地图偏小，在地图内的人员的密度会更多，也就鼓励玩家进行战斗，而非长时间搜寻物资</p>
+</li>
+<li><p>APEX地图中，有很多不能通过的地区，比如山脉和各种地图障碍，这就使得地图被划分成了几个相对独立的区域，玩家主要集中在这些区域之中进行战斗，而由于在跑毒时需要经过几个相同的路线，这又增加了几个队伍相遇的机会，增加对战率。并且APEX中会限制高处的点位，比如当爬到一定高度时，就会进行读秒，如果一直待在这类地方导致读秒结束，玩家就会直接死亡，这就十分有力的划分了玩家所能待在的区域，基本消除了爬到非常高的点位，然后无敌的存在。相反在PUBG中，没有地形障碍和高度限制，理论上玩家有很多的高山可以登上，从而找到一个绝佳的打靶位。*(能不能打中就是另外一回事了)*</p>
+</li>
+</ul>
+</li>
+<li><p>载具设计及其分布<br> 在APEX的地图中，少有像车辆、飞机等可以灵活转移的载具，原因在于玩家角色本身就很灵活，不是特别依赖交通工具进行转点，不过APEX中存在像滑索、弹射炮、滑翔塔等点位，用于长距离赶路，和使玩家在纵深较大的区域进行上下之间转移。</p>
+</li>
+<li><p>空投物资</p>
+<p> 两款游戏中，空投物资主要是空投枪，空投枪相比于地图上可以搜到的枪，在手感或数值上会有一些加强。值得注意的是APEX中的空投并非每次都会有枪；而且空投枪是不需要额外拾取子弹的，只能使用自带的子弹，这就使得可以让玩家留出更多背包空间；也估计是设计师认为空投枪比其他枪要强大，为它设计弹药限制。</p>
+</li>
+<li><p>建筑内部设计：<br> PUBG的建筑偏向于复杂，一般的房子中就有很多的阴人点位，而且高楼很多，环境非常复杂，这就导致了LYB很多；APEX中房屋非常直观，一眼扫过去基本没有可以隐匿的死角，而且在搜寻时，物资的排布基本上与房屋的基本结构配合的很好，使得基本不会走回头路，增加流畅感。</p>
+</li>
+</ul>
+<h2 id="非FPS传统枪械外的机制设计"><a href="#非FPS传统枪械外的机制设计" class="headerlink" title="非FPS传统枪械外的机制设计"></a>非FPS传统枪械外的机制设计</h2><ol>
+<li><p>护甲条与血条机制</p>
+<p>在APEX中，玩家的状态栏有血条和护甲条之分，受到伤害时优先扣除护甲，当护甲为0时扣除血量值。其中可以使用医疗包和电池对血量和护甲进行回复，在同等效果上的速度是电池恢复的更多，并且玩家在血量受到伤害时比护甲受到伤害时受击反馈更大(有更加明显的眩晕和抖动效果)，一般情况下是优先恢复护甲。不过由于毒圈扣除的是血量，当不在安全区时需要进行斟酌。</p>
+<img src="./谈谈APEX与PUBG游戏体验感不同的设计/APEX血条护甲条.png" style="zoom:150%;" />
+
+<p>在PUBG中，玩家的状态栏有能量条和血条。玩家受到伤害时只会扣除血条，当为0时，玩家判为死亡。在使用药品恢复血量时，一般的药品，比如绷带和急救包只能使血量恢复至75点，剩下的需要靠能量药品恢复。玩家的能量条一般情况下为空，只有使用能量饮料和止痛药时才能提高，在有能量值时，玩家会获得血量恢复的BUFF和加速的BUFF(仅限于能量值超过一半时)，获得的BUFF与能量值的大小正相关，能量值会随时间进行衰减。</p>
+<img src="./谈谈APEX与PUBG游戏体验感不同的设计/PUBG能量条血条.png" style="zoom: 150%;" />
+</li>
+<li><p>进化护甲</p>
+<p>APEX中最常见的是进化护盾，分为白蓝紫红四个级别，分别能够吸收50、75、100、125点伤害值，当进化护盾未升到红级时，可以通过对敌方造成伤害积攒点数，当点数到达阀值时，护甲就可以进化，这就是很明显的鼓励战斗的设计。还有就是，当击倒敌人时，如果对敌人进行终结(进行一段时间的处决，此时受到任何伤害都会打断该过程)，你的护甲会被直接回满，并且被杀死的敌人的箱子中的护甲也会被回满，使得在经历完战斗后，队伍能够以最快的速度恢复状态，防止被第三队袭击，出现螳螂捕蝉黄雀在后的情况，以降低玩家的挫败感。</p>
+<p>在PUBG中，护甲的作用是减少对应部位受到伤害的百分比，在计算伤害扣血时，护甲也会丢失耐久度，当耐久度为0时，护甲被破坏直接消失。所以经常出现打架完后护甲损失，越打越穷，然后就打不过其他对手。</p>
+</li>
+<li><p>载具机制</p>
+<p>由于地图广阔，转点时很少有地形限制，PUBG中非常依赖载具进行转移。并且在开阔的地区掩体稀少，有载具当作掩体也是很好的选择。为了模拟真实情况，PUBG中载具有油量条、血条、每个轮胎都会受击受损对载具运行产生影响。</p>
+</li>
+<li><p>倒地护盾及重生机制</p>
+<p>在两款游戏中，血量扣为0则判为倒地，若此时没有队友或队友全部倒地才判失败。但是倒地后两款游戏设计的状态也是不同的。在PUBG中，倒地时若没有自救器，必须依赖队友进行救援拉起，在队友未来时血条自动会下降，受到伤害也会下降，且只能爬行；在APEX中血条和最大倒地时间分为两个部分，并且拥有倒地护盾，能够阻挡一定伤害防止被补刀，运用得当或许还能为队友提供掩体。</p>
+<p>在死亡后都会生成一个盒子，APEX可以通过与盒子互动，拾取队友的牌子，在重生信标处为队友复活，但是初次打开队友的盒子时，会有一段一秒多的动画不能避免，经常出现鏖战中想要拾取队友盒子里的物资，却播放拾取动画导致失利。</p>
+</li>
+<li><p>制造机制</p>
+<p>APEX中可以收集材料，在复制器中制造大部分的消耗品和配件，这使得当运气不太好时，缺少某些配件或物资时能够通过除打架、搜寻的另外一种方式获得。</p>
+<img src="./谈谈APEX与PUBG游戏体验感不同的设计/APEX复制器.png" style="zoom:80%;" />
+</li>
+<li><p>毒圈机制</p>
+<p>玩家落地后会马上开始缩圈，不过两款游戏的缩圈有很大的不同。由于地图较大，PUBG在第一个圈时，给玩家的反应时间更长，过五分钟之后才会收缩，并且；APEX在落地后，一分钟或一分半就开始缩圈。在前几个圈时，毒圈伤害都不算高，但是在APEX中，第三个圈的伤害就很高了，一般是不会选择抗第三圈毒的，所以玩家会尽早进圈。</p>
+</li>
+<li><p>呼吸机制</p>
+<p>PUBG中有呼吸条，可以消耗呼吸条进行屏息(开镜瞄准时防止晃动)，潜水。<img src="./谈谈APEX与PUBG游戏体验感不同的设计/呼吸条.png" style="zoom:150%;" /></p>
+</li>
+<li><p>呼叫空投机制</p>
+<p>由于毒圈</p>
+</li>
+<li><p>标识互动机制</p>
+<p>APEX的标点系统是非常全面的，甚至很多时候并不需要玩家开口交流，只需要鼠标中键一点就能发起交流信息。如果想对其他玩家提出的信息进行回复，同样点击中键也可以赞同或者反对。</p>
+<p>除此之外，APEX在很多地方也有人性化的设置，对于刚接触APEX的玩家来说，基本上只要了解到鼠标中键可以标识交互，大部分功能都能实现，比如弹药不足向队友寻要，需要医疗物资等等。</p>
+<p>在PUBG中，没有一套全面的标点系统，只能在地图上进行标识。大多数时候在报点时，除了在地图上标明确切的点位，只能依据最上方的方向进行说明，比如正北方向，或者90方向。然而这种效果非常依赖团队之间的交流，并且在准确性上有待提高。</p>
+</li>
+<li><p>背包机制</p>
+<p>这两个游戏的不同在于PUBG采用的是为每个能够拾取到背包中的东西设置体积，比如一个急救包体积为10,一个一级背包能够提供的容量为150，只要剩余的空间足够，那就能够容纳新的物品；</p>
+<p>(PUBG背包效果图)</p>
+<p>APEX则是采用一个一个的物品栏，为每类物品设置一个各自能够承载的数目，当达到最大数目时，就必须占用下一个格子，背包的作用是提供给你额外的格子数，个人认为这么设计主要服务于<strong>设计师想要创造独特的效果</strong>，玩家可以通过选择不同的角色，(暴雷可以一个格子装两个相同种类的投掷物，电妹可以多装一个绝招加速器)，使用新的装备(金背包能够使一个格子装下三个护盾电池和医疗箱)。</p>
+<p>在两款游戏之间进行比较，如果刚落地时。PUBG就算捡到了防弹衣，其容量也只有100,如果只装子弹也只能装一百多发，而APEX在初始给予你两个小电、两个医疗包的情况下，玩家依旧拥有八个格子去装不同的物品，而一个格子可以承载60发普通子弹、28发狙击子弹、16发霰弹枪子弹，对比下来可以看出，APEX在落地时更加自由也更加鼓励落地架。</p>
+</li>
+</ol>
+<h2 id="枪械设计及子弹配置"><a href="#枪械设计及子弹配置" class="headerlink" title="枪械设计及子弹配置"></a>枪械设计及子弹配置</h2><p>PUBG大多数枪不同点在于不同的配件和基本属性<br>APEX在于这些的同时，还会对一些枪械赋予更多特性，比如充能步枪的滋崩特性，CAR的两种子弹都能使用的特性。PUBG中也有设计类似的效果，比如重机枪会有支架，当处于趴下动作时后坐力会大幅减小。这样设计能够让枪械除了具体数值之外，拥有更多的不同之处，为每把武器创造不一样的体验效果。<br>这种设计和ttk导致玩家在被袭击时的最佳策略不同，也会影响玩家的体验。</p>
+<h2 id="一点点思考"><a href="#一点点思考" class="headerlink" title="一点点思考"></a>一点点思考</h2><p>对于世界观的认知，基于现实与架空设计。</p>
+<p>很明显PUBG基于现实，而APEX属于架空设计。两者我不能说谁好谁坏，但是有一些点是比较值得关注的。<strong>游戏的世界观一定要有可扩展性</strong>。</p>
+<p>不可否认的是，两款游戏都是曾经的爆款，红极一时，目前来说仍保持有一定的黏性用户。不过APEX的发展一直很稳定，一直保有不错的热度；反观PUBG似乎在走下坡路，在线人数逐渐下滑，直到变成免费游戏后才有反转。在这里其实是想说说 <strong>游戏世界观的可扩展性，为游戏的后续发展的提供的作用。</strong></p>
+<p>依旧说说PUBG做例子，PUBG的第一张地图设定是核辐射中的切尔诺贝利，玩家必须面临着核辐射(毒圈)，和其他玩家的威胁，目标是存活到最后成为赢家。就从目前这个出发点来说，可以确认出两个信息。第一，游戏就是单纯的生存竞赛，作为玩家你的目标仅仅只有存活到最后；第二，是游戏中的背景时间，应该是1980到2017年，这就使得游戏的科技树和现实生活中的基本相同，这很符合玩家的认知，并且设计者在为游戏增加道具时也是基于现实科技的。但是这有一个不好的点是，游戏的后续更新，很难为玩家带来新的体验效果，比如枪械的更新只是单纯的不一样的模型，不一样的数值，可能会不一样的手感；但是如果不跟以往一样基于现实，天马行空一般提出设计又有可能带来反差撕裂感，比如应急医疗装备，可以在4s内完成急救包的使用，并且效果是直接回满血,(普通的急救包只能恢复到75血)</p>
+<p>而APEX的世界观，是继承于游戏开发商，重生的前作《泰坦陨落》系列，故事发生在未来，科技水平肯定不能以现代科技进行比较。而大逃生其实只是APEX竞赛，玩家作为猎杀者，在虚拟游戏中进行表演杀敌。这么一来似乎玩家也能理解为什么会有进化护盾，为什么会有毒圈，为什么会拿了牌子就可以复活队友。</p>
+<p>在世界观上，APEX也做得很好，每一个角色都有自己的故事，和其他角色也有很多羁绊联系，使得人物都有血有肉，而不只是一个白板。</p>
+<h2 id="总结篇"><a href="#总结篇" class="headerlink" title="总结篇"></a>总结篇</h2><p>根据以上的看上去可能会非常杂乱的对比介绍。希望你能够大概的感受的到两款游戏在设计上的区别，从而营造的不一样的游戏体验。<del>希望没有把你绕晕。</del></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%B8%B8%E6%88%8F%E7%AD%96%E5%88%92%EF%BC%8C%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1/" rel="tag"># 游戏策划，游戏设计</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/11/07/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%EF%BC%9A%E3%80%8A%E5%B0%8F%E5%B0%8F%E6%A2%A6%E9%AD%872%E3%80%8B%E7%9A%84%E6%81%90%E6%80%96%E6%84%9F%E4%BB%8E%E5%93%AA%E6%9D%A5/" rel="prev" title="游戏设计：《小小梦魇2》的恐怖感从哪来">
+                  <i class="fa fa-chevron-left"></i> 游戏设计：《小小梦魇2》的恐怖感从哪来
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="SOHUCS" sid="8959756f1201031a640c52546dad24bf"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">syhxzzz</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+<script class="next-config" data-name="changyan" type="application/json">{"enable":true,"appid":15673102339,"appkey":"SYHXSQQ0508"}</script>
+<script src="/js/third-party/comments/changyan.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.13.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="角色设计方法论《英雄联盟》宇宙是通过英雄来贯穿的，虽然其实它并不是以角色为核心的游戏 三种驱动方式 设计驱动 故事驱动 艺术驱动">
+<meta property="og:type" content="article">
+<meta property="og:title" content="角色设计：如何为Moba游戏设计角色">
+<meta property="og:url" content="http://example.com/2022/09/01/%E8%A7%92%E8%89%B2%E8%AE%BE%E8%AE%A1%EF%BC%9A%E5%A6%82%E4%BD%95%E4%B8%BAMoba%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%E8%A7%92%E8%89%B2/index.html">
+<meta property="og:site_name" content="syhxzzz&#39;s Blog">
+<meta property="og:description" content="角色设计方法论《英雄联盟》宇宙是通过英雄来贯穿的，虽然其实它并不是以角色为核心的游戏 三种驱动方式 设计驱动 故事驱动 艺术驱动">
+<meta property="og:locale">
+<meta property="og:image" content="http://example.com/2022/09/01/%E8%A7%92%E8%89%B2%E8%AE%BE%E8%AE%A1%EF%BC%9A%E5%A6%82%E4%BD%95%E4%B8%BAMoba%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%E8%A7%92%E8%89%B2/%E8%A7%92%E8%89%B2%E8%AE%BE%E8%AE%A1%EF%BC%9A%E5%A6%82%E4%BD%95%E4%B8%BAMoba%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%E8%A7%92%E8%89%B2/%E9%87%91%E5%85%8B%E6%96%AF.jpg">
+<meta property="og:image" content="http://example.com/2022/09/01/%E8%A7%92%E8%89%B2%E8%AE%BE%E8%AE%A1%EF%BC%9A%E5%A6%82%E4%BD%95%E4%B8%BAMoba%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%E8%A7%92%E8%89%B2/%E8%A7%92%E8%89%B2%E8%AE%BE%E8%AE%A1%EF%BC%9A%E5%A6%82%E4%BD%95%E4%B8%BAMoba%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%E8%A7%92%E8%89%B2/%E7%91%9E%E5%85%B9%E6%A6%82%E5%BF%B5%E5%9B%BE.png">
+<meta property="og:image" content="http://example.com/2022/09/01/%E8%A7%92%E8%89%B2%E8%AE%BE%E8%AE%A1%EF%BC%9A%E5%A6%82%E4%BD%95%E4%B8%BAMoba%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%E8%A7%92%E8%89%B2/%E8%A7%92%E8%89%B2%E8%AE%BE%E8%AE%A1%EF%BC%9A%E5%A6%82%E4%BD%95%E4%B8%BAMoba%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%E8%A7%92%E8%89%B2/%E6%8A%80%E8%83%BD%E5%BE%AA%E7%8E%AF%E5%9B%BE.png">
+<meta property="og:image" content="http://example.com/2022/09/01/%E8%A7%92%E8%89%B2%E8%AE%BE%E8%AE%A1%EF%BC%9A%E5%A6%82%E4%BD%95%E4%B8%BAMoba%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%E8%A7%92%E8%89%B2/%E8%A7%92%E8%89%B2%E8%AE%BE%E8%AE%A1%EF%BC%9A%E5%A6%82%E4%BD%95%E4%B8%BAMoba%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%E8%A7%92%E8%89%B2/%E9%98%BF%E6%9C%A8%E6%9C%A8%E6%8A%80%E8%83%BD%E6%95%88%E6%9E%9C.png">
+<meta property="og:image" content="http://example.com/2022/09/01/%E8%A7%92%E8%89%B2%E8%AE%BE%E8%AE%A1%EF%BC%9A%E5%A6%82%E4%BD%95%E4%B8%BAMoba%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%E8%A7%92%E8%89%B2/%E8%A7%92%E8%89%B2%E8%AE%BE%E8%AE%A1%EF%BC%9A%E5%A6%82%E4%BD%95%E4%B8%BAMoba%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%E8%A7%92%E8%89%B2/%E9%98%BF%E6%9C%A8%E6%9C%A8%E5%8E%9F%E8%AF%9D.jpeg">
+<meta property="og:image" content="http://example.com/2022/09/01/%E8%A7%92%E8%89%B2%E8%AE%BE%E8%AE%A1%EF%BC%9A%E5%A6%82%E4%BD%95%E4%B8%BAMoba%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%E8%A7%92%E8%89%B2/%E8%A7%92%E8%89%B2%E8%AE%BE%E8%AE%A1%EF%BC%9A%E5%A6%82%E4%BD%95%E4%B8%BAMoba%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%E8%A7%92%E8%89%B2/%E7%B4%A2%E5%AD%90%E6%A6%82%E5%BF%B5%E5%9B%BE.jpg">
+<meta property="og:image" content="http://example.com/2022/09/01/%E8%A7%92%E8%89%B2%E8%AE%BE%E8%AE%A1%EF%BC%9A%E5%A6%82%E4%BD%95%E4%B8%BAMoba%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%E8%A7%92%E8%89%B2/%E8%A7%92%E8%89%B2%E8%AE%BE%E8%AE%A1%EF%BC%9A%E5%A6%82%E4%BD%95%E4%B8%BAMoba%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%E8%A7%92%E8%89%B2/%E7%B4%A2%E5%AD%90%E6%8A%80%E8%83%BD%E6%A6%82%E5%BF%B5%E5%9B%BE.jpg">
+<meta property="og:image" content="http://example.com/%E8%A7%92%E8%89%B2%E8%AE%BE%E8%AE%A1%EF%BC%9A%E5%A6%82%E4%BD%95%E4%B8%BAMoba%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%E8%A7%92%E8%89%B2/%E5%8D%A2%E4%BB%99%E6%8A%80%E8%83%BD%E5%9B%BE.png">
+<meta property="og:image" content="http://example.com/2022/09/01/%E8%A7%92%E8%89%B2%E8%AE%BE%E8%AE%A1%EF%BC%9A%E5%A6%82%E4%BD%95%E4%B8%BAMoba%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%E8%A7%92%E8%89%B2/%E8%A7%92%E8%89%B2%E8%AE%BE%E8%AE%A1%EF%BC%9A%E5%A6%82%E4%BD%95%E4%B8%BAMoba%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%E8%A7%92%E8%89%B2/%E5%8F%8D%E5%88%B6%E5%9B%BE.png">
+<meta property="article:published_time" content="2022-09-01T10:24:50.000Z">
+<meta property="article:modified_time" content="2023-03-29T06:48:38.000Z">
+<meta property="article:author" content="syhxzzz">
+<meta property="article:tag" content="游戏策划、游戏设计">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2022/09/01/%E8%A7%92%E8%89%B2%E8%AE%BE%E8%AE%A1%EF%BC%9A%E5%A6%82%E4%BD%95%E4%B8%BAMoba%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%E8%A7%92%E8%89%B2/%E8%A7%92%E8%89%B2%E8%AE%BE%E8%AE%A1%EF%BC%9A%E5%A6%82%E4%BD%95%E4%B8%BAMoba%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%E8%A7%92%E8%89%B2/%E9%87%91%E5%85%8B%E6%96%AF.jpg">
+
+
+<link rel="canonical" href="http://example.com/2022/09/01/%E8%A7%92%E8%89%B2%E8%AE%BE%E8%AE%A1%EF%BC%9A%E5%A6%82%E4%BD%95%E4%B8%BAMoba%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%E8%A7%92%E8%89%B2/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh","comments":true,"permalink":"http://example.com/2022/09/01/%E8%A7%92%E8%89%B2%E8%AE%BE%E8%AE%A1%EF%BC%9A%E5%A6%82%E4%BD%95%E4%B8%BAMoba%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%E8%A7%92%E8%89%B2/","path":"2022/09/01/角色设计：如何为Moba游戏设计角色/","title":"角色设计：如何为Moba游戏设计角色"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>角色设计：如何为Moba游戏设计角色 | syhxzzz's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">syhxzzz's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">加权弱鸡、代码蠢材、策划新手</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A7%92%E8%89%B2%E8%AE%BE%E8%AE%A1%E6%96%B9%E6%B3%95%E8%AE%BA"><span class="nav-number">1.</span> <span class="nav-text">角色设计方法论</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E7%A7%8D%E9%A9%B1%E5%8A%A8%E6%96%B9%E5%BC%8F"><span class="nav-number">1.1.</span> <span class="nav-text">三种驱动方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%98%8E%E7%A1%AE%E5%AE%9A%E4%BD%8D%EF%BC%8C%E4%BD%A0%E6%89%80%E5%87%86%E5%A4%87%E7%9A%84%E8%A7%92%E8%89%B2%E7%A9%B6%E7%AB%9F%E6%98%AF%E4%B8%80%E4%B8%AA%E6%80%8E%E6%A0%B7%E7%9A%84%E8%A7%92%E8%89%B2"><span class="nav-number">1.2.</span> <span class="nav-text">明确定位，你所准备的角色究竟是一个怎样的角色</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%92%E8%89%B2%E8%AE%BE%E8%AE%A1%E7%9A%84%E7%9B%AE%E7%9A%84%E6%98%AF%E4%BD%BF%E7%8E%A9%E5%AE%B6%E4%B8%8E%E8%A7%92%E8%89%B2%E4%BA%A7%E7%94%9F%E5%85%B1%E9%B8%A3"><span class="nav-number">1.2.1.</span> <span class="nav-text">角色设计的目的是使玩家与角色产生共鸣</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Moba%E8%A7%92%E8%89%B2%E6%8A%80%E8%83%BD%E4%B8%8E%E7%8E%A9%E6%B3%95%E8%AE%BE%E8%AE%A1"><span class="nav-number">2.</span> <span class="nav-text">Moba角色技能与玩法设计</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8A%80%E8%83%BD%E8%AE%BE%E8%AE%A1%EF%BC%8C%E5%81%9A%E4%B8%80%E4%B8%AA%E5%A5%BD%E7%8E%A9%E7%9A%84%E8%A7%92%E8%89%B2"><span class="nav-number">2.1.</span> <span class="nav-text">技能设计，做一个好玩的角色</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AF%B9%E8%A7%92%E8%89%B2%E8%BF%9B%E8%A1%8C%E6%89%93%E7%A3%A8"><span class="nav-number">3.</span> <span class="nav-text">对角色进行打磨</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%83%BD%E5%8A%9B%E5%AE%9A%E4%BD%8D"><span class="nav-number">3.1.</span> <span class="nav-text">能力定位</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%90%E9%95%BF%E6%80%A7%E5%88%86%E6%9E%90"><span class="nav-number">3.2.</span> <span class="nav-text">成长性分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%98%E6%9C%AF%E5%88%86%E6%9E%90"><span class="nav-number">3.3.</span> <span class="nav-text">战术分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%AF%E5%8F%8D%E5%88%B6%E6%80%A7"><span class="nav-number">3.4.</span> <span class="nav-text">可反制性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%9F%E6%80%81%E7%8E%AF%E5%A2%83%E8%A1%A5%E5%85%85"><span class="nav-number">3.5.</span> <span class="nav-text">生态环境补充</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">4.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">syhxzzz</p>
+  <div class="site-description" itemprop="description">每天不知道都在干什么，在写一些乱七八糟的东西，包括但不限于Unity、游戏策划、CS技术</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/01/%E8%A7%92%E8%89%B2%E8%AE%BE%E8%AE%A1%EF%BC%9A%E5%A6%82%E4%BD%95%E4%B8%BAMoba%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%E8%A7%92%E8%89%B2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="syhxzzz">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="syhxzzz's Blog">
+      <meta itemprop="description" content="每天不知道都在干什么，在写一些乱七八糟的东西，包括但不限于Unity、游戏策划、CS技术">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="角色设计：如何为Moba游戏设计角色 | syhxzzz's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          角色设计：如何为Moba游戏设计角色
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-09-01 10:24:50" itemprop="dateCreated datePublished" datetime="2022-09-01T10:24:50Z">2022-09-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2023-03-29 06:48:38" itemprop="dateModified" datetime="2023-03-29T06:48:38Z">2023-03-29</time>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan: </span>
+    
+    <a title="角色设计：如何为Moba游戏设计角色" href="/2022/09/01/%E8%A7%92%E8%89%B2%E8%AE%BE%E8%AE%A1%EF%BC%9A%E5%A6%82%E4%BD%95%E4%B8%BAMoba%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%E8%A7%92%E8%89%B2/#SOHUCS" itemprop="discussionUrl">
+      <span id="sourceId::525d67fe38299005f687524d375b164e" class="cy_cmt_count" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="角色设计方法论"><a href="#角色设计方法论" class="headerlink" title="角色设计方法论"></a>角色设计方法论</h1><p>《英雄联盟》宇宙是通过英雄来贯穿的，虽然其实它并不是以角色为核心的游戏</p>
+<h2 id="三种驱动方式"><a href="#三种驱动方式" class="headerlink" title="三种驱动方式"></a>三种驱动方式</h2><ol>
+<li>设计驱动</li>
+<li>故事驱动</li>
+<li>艺术驱动</li>
+</ol>
+<span id="more"></span>
+
+<h2 id="明确定位，你所准备的角色究竟是一个怎样的角色"><a href="#明确定位，你所准备的角色究竟是一个怎样的角色" class="headerlink" title="明确定位，你所准备的角色究竟是一个怎样的角色"></a>明确定位，你所准备的角色究竟是一个怎样的角色</h2><p>玩法设计：角色的技能是什么，表现水平如何</p>
+<p>角色故事：角色是谁，他的背景故事以及与其他角色之间的联系，他对世界的看法</p>
+<p>形象设计：角色的形象、画风、技能特效等</p>
+<h3 id="角色设计的目的是使玩家与角色产生共鸣"><a href="#角色设计的目的是使玩家与角色产生共鸣" class="headerlink" title="角色设计的目的是使玩家与角色产生共鸣"></a>角色设计的目的是使玩家与角色产生共鸣</h3><p>jinx：天才、瘦削、情绪非常不稳定</p>
+<img src="./角色设计：如何为Moba游戏设计角色/金克斯.jpg" style="zoom:40%;" />
+
+<p>亚索：天才御风剑客，被诬陷，流浪人间<br>根据角色故事设计，对角色形象进行特色化设计，能够使游戏ip更具特色</p>
+<p>比如从法师这个关键词产生的联想：高高的帽子？拿着法杖？<br>瑞兹：一个裸着蓝色上身背着一个大大的卷轴的会念咒语老法师</p>
+<img src="角色设计：如何为Moba游戏设计角色/瑞兹概念图.png" style="zoom: 33%;" />
+
+<blockquote>
+<p>对角色设计保持灵活和开放是很有必要的：<br>一个会说话的浣熊，他最好的朋友是一棵树，再加上80年代的半身游侠，再来一只绿色的卡魔拉  &#x3D;&#x3D;&gt;&gt;《银河护卫队》</p>
+</blockquote>
+<p>一个核心要素 基于核心要素构建一个丰满的人物形象</p>
+<p>玩法 角色 形象三位一体 技能之间需要有连携性 始终不要偏离最基本的核心要素和主题</p>
+<h1 id="Moba角色技能与玩法设计"><a href="#Moba角色技能与玩法设计" class="headerlink" title="Moba角色技能与玩法设计"></a>Moba角色技能与玩法设计</h1><p>首先给出循环图<br>基础技能组，核心玩法，功能定位，角色设定<br>基础技能组通过combo连招，找到角色的对应核心玩法，根据其核心玩法确定其定位及功能，再回过头来强化角色的设定</p>
+<img src="./角色设计：如何为Moba游戏设计角色/技能循环图.png" style="zoom:50%;" />
+
+<p>(该循环图来自<a target="_blank" rel="noopener" href="https://gameinstitute.qq.com/article/10023">MOBA游戏作坊 ——如何打造人气英雄</a>)</p>
+<p>之后以两个案例介绍角色设计<br>案例一<br>以故事设计为出发点</p>
+<ul>
+<li><p>如孤魂一般，伤心地在世界各地游荡</p>
+</li>
+<li><p>被远古的魔法所诅咒，他的触碰带着死亡与毁灭</p>
+</li>
+<li><p>很多传说和神话都由他而起</p>
+<p>玩法设计</p>
+<img src="角色设计：如何为Moba游戏设计角色/阿木木技能效果.png"  /></li>
+</ul>
+<p>这个角色是阿木木。</p>
+<p>定位：带有控制技能保护队友的坦克</p>
+<img src="./角色设计：如何为Moba游戏设计角色/阿木木原话.jpeg" style="zoom:150%;" />
+
+<blockquote>
+<p>但从这个案例中我们发现一个问题是：视觉上看起来完全不像一个坦克，并且给人的感觉是他好像是一个需要被保护的，而不是保护其他人，还有，也感觉不到这个角色很危险，带着死亡与毁灭。所以，阿木木这个角色的造型跟他的主题其实很不搭。其实《英雄联盟》早期的角色虽然很多，很有特色，但是他们有很多的问题，即他们在设计上的黄金三角之间是互相不呼应的。我们在早期的《英雄联盟》的英雄设计里面学到了：<strong>我们所有的设计应该构架在他人认知之上。</strong></p>
+</blockquote>
+<p>认知的展现：</p>
+<ul>
+<li><p>颜色：冷暖色</p>
+</li>
+<li><p>形状，尖锐、平缓</p>
+</li>
+<li><p>声音：刺耳、舒缓</p>
+</li>
+<li><p>光影：阴暗程度</p>
+</li>
+</ul>
+<p>具体步骤：<br>1.早期探索<br>2.确定其核心设计<br>3.丰富完善设计</p>
+<p>角色设计的核心支柱核心支柱的定义：定义什么是最重要的帮助我们做艰难的决定帮助我们推进设计通常是全局性的，非细节的最多不超过三个支柱英雄设计核心支柱的运用设计每位英雄都必须要回答的三个问题：</p>
+<ol>
+<li><p>为什么？他&#x2F;她的目的是什么？比如，你可能不会去怀疑为什么NPC在那儿站一个星期了还在那站着，但是一个你真正会去关心的角色他应该有他自己的目的。</p>
+</li>
+<li><p>是什么？他&#x2F;她的外观是什么样的？性格？个性？怎么样? </p>
+</li>
+<li><p>他&#x2F;她有什么样的特殊才能能帮助他&#x2F;她实现自己的目标。</p>
+</li>
+</ol>
+<p>接下来将从具体开发的流程，介绍一位角色的设计<br>那个男人….：<br>两张图片</p>
+<p><img src="角色设计：如何为Moba游戏设计角色/索子概念图.jpg" style="zoom:40%;" /><img src="角色设计：如何为Moba游戏设计角色/索子技能概念图.jpg" style="zoom:40%;" /></p>
+<p>支柱1：亚索是一位传奇的剑客；<br>支柱2：他能熟练地掌握用剑御风的技术；<br>支柱3：他以前是一位伟大的战士，但是现在却落魄一人逃亡。<br>美术上：<br>剑的形状，龙纹——艾欧尼亚的传统，夸张的头发和披风——体现风的特点，蓝色为主色调，黄色为衬托——象征自由和荣耀<br>玩法上：<br>从风的角度，Q积攒旋风并释放，W一个强力的阻挡地方飞行道具的神技，R对新手很不友好，只有在敌方被击飞时才能使用，需要很高的熟练度——<br>故事上<br>亚索其实在他黄金时代的时候是一个很骄傲的剑客，是剑客学校最优秀的剑客。后被诬陷，他的哥哥为了教会他要有耐心，找到事情的真相，最后在跟他的对决中他哥哥牺牲了自己，但是教会了他如何去面对荣耀和死亡。</p>
+<h2 id="技能设计，做一个好玩的角色"><a href="#技能设计，做一个好玩的角色" class="headerlink" title="技能设计，做一个好玩的角色"></a>技能设计，做一个好玩的角色</h2><ol>
+<li><p>操作上给玩家设置挑战</p>
+<ul>
+<li><p>速度挑战</p>
+<ul>
+<li>反应速度</li>
+<li>技能连招的释放速度</li>
+</ul>
+</li>
+<li><p>精度挑战（延迟类技能、小范围技能）</p>
+<ul>
+<li>动态判定效果</li>
+</ul>
+</li>
+<li><p>为技能设计多个判定区域和效果</p>
+</li>
+</ul>
+</li>
+<li><p>给玩家施展策略的机会</p>
+<ul>
+<li><p>外显型策略</p>
+<p>强引导，设计师教你怎么玩游戏，比如每进行一次普通攻击减少一次某某技能CD。</p>
+</li>
+<li><p>学习型策略</p>
+<p>让玩家在游戏中学习到角色的新的玩法用法</p>
+<ul>
+<li><p>隐性的搭配组合？</p>
+<p>技能组合使用能够获得额外的效果，但是也要保证技能主要是分开使用，保证技能的独立性，而非强行捆绑。</p>
+</li>
+<li><p>最大化收益</p>
+<p>为技能的数值设定上下限，让玩家主动去追求收益最大化。</p>
+</li>
+<li><p>组合型战略</p>
+<p>在多次实战时，玩家会发现不同角色的技能之间存在着关联效果，可以作为配合使用或者需要避免搭配组合。</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>引入新的乐趣点</p>
+<p>叠层？收集？预判？规划？</p>
+</li>
+</ol>
+<h1 id="对角色进行打磨"><a href="#对角色进行打磨" class="headerlink" title="对角色进行打磨"></a>对角色进行打磨</h1><h2 id="能力定位"><a href="#能力定位" class="headerlink" title="能力定位"></a>能力定位</h2><p>它的定位是什么？<br>这位角色的强势的点是什么？<br>什么时候开始发力？<br>对于装备是否有依赖性？<br>是否与其他的角色存在组合效果？</p>
+<ol>
+<li><strong>作为前期英雄，设计师需要关注的是英雄在前期线上有无足够强的压制能力</strong>，例如前期英雄能够通过CD较短的技能来压制对面的发育，而且他的输出能力一定是偏单体攻击的。</li>
+<li><strong>中期英雄的设计则需要在中期有一方面的突出能力，比如机动性、控制能力等等。</strong>假设英雄在中期有一个特殊能力或者比较突出的技能，他就能有效地发起小规模战斗来带动整个游戏节奏。</li>
+<li><strong>而在后期英雄的设计上，往往需要限制前期技能效果。</strong>假如一个英雄的技能成长性高，或者一个英雄依赖多件核心装备的获取，这都属于偏后期的设计。那么在这种设计下，设计师就会对后期英雄做出一定限制，例如前期对线能力的削弱等等。</li>
+</ol>
+<h2 id="成长性分析"><a href="#成长性分析" class="headerlink" title="成长性分析"></a>成长性分析</h2><p>每个英雄包括被动，共有五个技能，角色的技能的效果或者数值都会随着技能等级的提升，从而得到提高。这种提升的并非指一般的随着技能等级提升，技能伤害的数值得到增强。而更多的指技能的效果提升得到质的提升，比如技能的属性加成，或者得到阶跃性增强。一般来说，五个技能中，有这种提升的技能越多，英雄角色的成长性就越强。比如说英雄联盟中，卢仙的技能提升在于被动，Q和E,当这三个技能差不多都升到满级时，就意味者到达了这个角色的强势期，在实际验证中也确实符合具体数据。根据这种方式，可以确认一个英雄的成长性和强势期验证。</p>
+<p>可以这么说，一个英雄的成长性的技能越多，这个英雄的后期能力就会越强，所以发力期也在后期，但是因为需要做到游戏内的平衡，在前期做不到过于强势。</p>
+<p>而强势期一般指的是最为重要的技能得到完全提升时，角色所在的时期。比如刚才所说的卢仙，Q升到满级时伤害得到了保证，E升到满级时，CD减短并且消耗得到了显著降低，保证了灵活性。并且在13级时被动的双枪效果也能得到加成的提高。</p>
+<p><img src="/./%E8%A7%92%E8%89%B2%E8%AE%BE%E8%AE%A1%EF%BC%9A%E5%A6%82%E4%BD%95%E4%B8%BAMoba%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%E8%A7%92%E8%89%B2/%E5%8D%A2%E4%BB%99%E6%8A%80%E8%83%BD%E5%9B%BE.png"></p>
+<h2 id="战术分析"><a href="#战术分析" class="headerlink" title="战术分析"></a>战术分析</h2><p>从游戏的具体场景中验证角色技能组的可行性。从已知的技能设计，为其推出相应的玩法。</p>
+<p>玩法上可以从游戏的不同时期的侧重点，技能Combo，技巧；和为其进行相应的出装探索。</p>
+<h2 id="可反制性"><a href="#可反制性" class="headerlink" title="可反制性"></a>可反制性</h2><p>一般情况下，是先设计机制，然后为机制赋予数值，根据实际的反馈，对数值进行修改，或者重新设计<br>技能由 伤害，控制，回复，增益，位移 作为基本元素所构成，而机制就是缝出来的效果，比如：<br>R，对友方进行回复，对敌方进行击退——辅助<br>R：进行一段位移，并对低生命值敌人造成斩杀，然后通过拾取灵魂，使用敌方英雄并刷新R——收割型刺客or战士</p>
+<p>根据其技能机制，需要对其做出<strong>反制</strong>，这也是moba游戏的魅力，一物降一物，从来没有最优解。</p>
+<img src="角色设计：如何为Moba游戏设计角色/反制图.png"  />
+
+<h2 id="生态环境补充"><a href="#生态环境补充" class="headerlink" title="生态环境补充"></a>生态环境补充</h2><p>游戏环境缺什么？ 就补什么<br>游戏环境什么过于强力？刻意制造天敌</p>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ol>
+<li><a target="_blank" rel="noopener" href="https://gameinstitute.qq.com/article/10023">MOBA游戏作坊 ——如何打造人气英雄</a></li>
+<li><a target="_blank" rel="noopener" href="https://gameinstitute.qq.com/course/detail/10186">我们是如何打造《英雄联盟》IP宇宙的？</a></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%B8%B8%E6%88%8F%E7%AD%96%E5%88%92%E3%80%81%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1/" rel="tag"># 游戏策划、游戏设计</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/09/04/python%E5%88%87%E6%8D%A2%E7%8E%AF%E5%A2%83/" rel="next" title="python切换环境">
+                  python切换环境 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="SOHUCS" sid="525d67fe38299005f687524d375b164e"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">syhxzzz</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+<script class="next-config" data-name="changyan" type="application/json">{"enable":true,"appid":15673102339,"appkey":"SYHXSQQ0508"}</script>
+<script src="/js/third-party/comments/changyan.js"></script>
+
+</body>
+</html>

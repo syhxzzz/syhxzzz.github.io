@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.13.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="前言为纪念我第一次使用手柄通关的《小小梦魇2》，也为自己为什么喜欢这款游戏作一个思考总结，这篇文章将谈谈这款游戏让我又爱又恨的地方：它核心的恐怖感设计。 概要《小小梦魇2》是一款2.5D的以解密为核心的卡通画风的恐怖游戏。  该作中玩家扮演小孩摩诺，和电脑控制的前作主角小六协作求生，并揭开黑暗的秘密。——《维基百科》  游戏的几个主要场景为：森林、学校、医院、市区、灯塔（梦境）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="游戏设计：《小小梦魇2》的恐怖感从哪来">
+<meta property="og:url" content="http://example.com/2022/11/07/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%EF%BC%9A%E3%80%8A%E5%B0%8F%E5%B0%8F%E6%A2%A6%E9%AD%872%E3%80%8B%E7%9A%84%E6%81%90%E6%80%96%E6%84%9F%E4%BB%8E%E5%93%AA%E6%9D%A5/index.html">
+<meta property="og:site_name" content="syhxzzz&#39;s Blog">
+<meta property="og:description" content="前言为纪念我第一次使用手柄通关的《小小梦魇2》，也为自己为什么喜欢这款游戏作一个思考总结，这篇文章将谈谈这款游戏让我又爱又恨的地方：它核心的恐怖感设计。 概要《小小梦魇2》是一款2.5D的以解密为核心的卡通画风的恐怖游戏。  该作中玩家扮演小孩摩诺，和电脑控制的前作主角小六协作求生，并揭开黑暗的秘密。——《维基百科》  游戏的几个主要场景为：森林、学校、医院、市区、灯塔（梦境）">
+<meta property="og:locale">
+<meta property="og:image" content="http://example.com/2022/11/07/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%EF%BC%9A%E3%80%8A%E5%B0%8F%E5%B0%8F%E6%A2%A6%E9%AD%872%E3%80%8B%E7%9A%84%E6%81%90%E6%80%96%E6%84%9F%E4%BB%8E%E5%93%AA%E6%9D%A5/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%EF%BC%9A%E3%80%8A%E5%B0%8F%E5%B0%8F%E6%A2%A6%E9%AD%872%E3%80%8B%E7%9A%84%E6%81%90%E6%80%96%E6%84%9F%E4%BB%8E%E5%93%AA%E6%9D%A5/OIP.jpeg">
+<meta property="og:image" content="http://example.com/2022/11/07/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%EF%BC%9A%E3%80%8A%E5%B0%8F%E5%B0%8F%E6%A2%A6%E9%AD%872%E3%80%8B%E7%9A%84%E6%81%90%E6%80%96%E6%84%9F%E4%BB%8E%E5%93%AA%E6%9D%A5/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%EF%BC%9A%E3%80%8A%E5%B0%8F%E5%B0%8F%E6%A2%A6%E9%AD%872%E3%80%8B%E7%9A%84%E6%81%90%E6%80%96%E6%84%9F%E4%BB%8E%E5%93%AA%E6%9D%A5/%E5%B0%8F%E5%B0%8F%E6%A2%A6%E9%AD%872/2022-11-06_23-13.png">
+<meta property="og:image" content="http://example.com/2022/11/07/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%EF%BC%9A%E3%80%8A%E5%B0%8F%E5%B0%8F%E6%A2%A6%E9%AD%872%E3%80%8B%E7%9A%84%E6%81%90%E6%80%96%E6%84%9F%E4%BB%8E%E5%93%AA%E6%9D%A5/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%EF%BC%9A%E3%80%8A%E5%B0%8F%E5%B0%8F%E6%A2%A6%E9%AD%872%E3%80%8B%E7%9A%84%E6%81%90%E6%80%96%E6%84%9F%E4%BB%8E%E5%93%AA%E6%9D%A5/%E5%B0%8F%E5%B0%8F%E6%A2%A6%E9%AD%872/%E4%B8%80%E5%A0%86%E6%89%8B.png">
+<meta property="og:image" content="http://example.com/2022/11/07/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%EF%BC%9A%E3%80%8A%E5%B0%8F%E5%B0%8F%E6%A2%A6%E9%AD%872%E3%80%8B%E7%9A%84%E6%81%90%E6%80%96%E6%84%9F%E4%BB%8E%E5%93%AA%E6%9D%A5/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%EF%BC%9A%E3%80%8A%E5%B0%8F%E5%B0%8F%E6%A2%A6%E9%AD%872%E3%80%8B%E7%9A%84%E6%81%90%E6%80%96%E6%84%9F%E4%BB%8E%E5%93%AA%E6%9D%A5/%E5%B0%8F%E5%B0%8F%E6%A2%A6%E9%AD%872/123%E6%9C%A8%E5%A4%B4%E4%BA%BA.gif">
+<meta property="article:published_time" content="2022-11-06T22:52:10.000Z">
+<meta property="article:modified_time" content="2023-03-29T06:48:38.000Z">
+<meta property="article:author" content="syhxzzz">
+<meta property="article:tag" content="游戏策划、游戏设计">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2022/11/07/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%EF%BC%9A%E3%80%8A%E5%B0%8F%E5%B0%8F%E6%A2%A6%E9%AD%872%E3%80%8B%E7%9A%84%E6%81%90%E6%80%96%E6%84%9F%E4%BB%8E%E5%93%AA%E6%9D%A5/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%EF%BC%9A%E3%80%8A%E5%B0%8F%E5%B0%8F%E6%A2%A6%E9%AD%872%E3%80%8B%E7%9A%84%E6%81%90%E6%80%96%E6%84%9F%E4%BB%8E%E5%93%AA%E6%9D%A5/OIP.jpeg">
+
+
+<link rel="canonical" href="http://example.com/2022/11/07/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%EF%BC%9A%E3%80%8A%E5%B0%8F%E5%B0%8F%E6%A2%A6%E9%AD%872%E3%80%8B%E7%9A%84%E6%81%90%E6%80%96%E6%84%9F%E4%BB%8E%E5%93%AA%E6%9D%A5/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh","comments":true,"permalink":"http://example.com/2022/11/07/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%EF%BC%9A%E3%80%8A%E5%B0%8F%E5%B0%8F%E6%A2%A6%E9%AD%872%E3%80%8B%E7%9A%84%E6%81%90%E6%80%96%E6%84%9F%E4%BB%8E%E5%93%AA%E6%9D%A5/","path":"2022/11/07/游戏设计：《小小梦魇2》的恐怖感从哪来/","title":"游戏设计：《小小梦魇2》的恐怖感从哪来"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>游戏设计：《小小梦魇2》的恐怖感从哪来 | syhxzzz's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">syhxzzz's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">加权弱鸡、代码蠢材、策划新手</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A6%82%E8%A6%81"><span class="nav-number">2.</span> <span class="nav-text">概要</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%81%90%E6%80%96%E6%84%9F%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%BD%93%E7%8E%B0"><span class="nav-number">3.</span> <span class="nav-text">恐怖感的设计体现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E7%82%B9%E7%82%B9%E6%84%9F%E6%83%B3%E6%80%BB%E7%BB%93"><span class="nav-number">4.</span> <span class="nav-text">一点点感想总结</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">syhxzzz</p>
+  <div class="site-description" itemprop="description">每天不知道都在干什么，在写一些乱七八糟的东西，包括但不限于Unity、游戏策划、CS技术</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/11/07/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%EF%BC%9A%E3%80%8A%E5%B0%8F%E5%B0%8F%E6%A2%A6%E9%AD%872%E3%80%8B%E7%9A%84%E6%81%90%E6%80%96%E6%84%9F%E4%BB%8E%E5%93%AA%E6%9D%A5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="syhxzzz">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="syhxzzz's Blog">
+      <meta itemprop="description" content="每天不知道都在干什么，在写一些乱七八糟的东西，包括但不限于Unity、游戏策划、CS技术">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="游戏设计：《小小梦魇2》的恐怖感从哪来 | syhxzzz's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          游戏设计：《小小梦魇2》的恐怖感从哪来
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-11-06 22:52:10" itemprop="dateCreated datePublished" datetime="2022-11-06T22:52:10Z">2022-11-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2023-03-29 06:48:38" itemprop="dateModified" datetime="2023-03-29T06:48:38Z">2023-03-29</time>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan: </span>
+    
+    <a title="游戏设计：《小小梦魇2》的恐怖感从哪来" href="/2022/11/07/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%EF%BC%9A%E3%80%8A%E5%B0%8F%E5%B0%8F%E6%A2%A6%E9%AD%872%E3%80%8B%E7%9A%84%E6%81%90%E6%80%96%E6%84%9F%E4%BB%8E%E5%93%AA%E6%9D%A5/#SOHUCS" itemprop="discussionUrl">
+      <span id="sourceId::9c19d80c6b6e37da84c84fe7e5e11c4a" class="cy_cmt_count" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>为纪念我第一次使用手柄通关的《小小梦魇2》，也为自己为什么喜欢这款游戏作一个思考总结，这篇文章将谈谈这款游戏让我又爱又恨的地方：<strong>它核心的恐怖感设计。</strong></p>
+<h2 id="概要"><a href="#概要" class="headerlink" title="概要"></a>概要</h2><p>《小小梦魇2》是一款2.5D的以<strong>解密</strong>为核心的卡通画风的<strong>恐怖</strong>游戏。</p>
+<blockquote>
+<p>该作中玩家扮演小孩摩诺，和电脑控制的前作主角小六协作求生，并揭开黑暗的秘密。——《维基百科》</p>
+</blockquote>
+<p>游戏的几个主要场景为：森林、学校、医院、市区、灯塔（梦境）</p>
+<span id="more"></span>
+
+<h2 id="恐怖感的设计体现"><a href="#恐怖感的设计体现" class="headerlink" title="恐怖感的设计体现"></a>恐怖感的设计体现</h2><p>作为一款恐怖游戏，《小小梦魇2》并不是主打<code>Jump scare</code>的 <em>虽然里面仍有不少突然跳出来吓人的</em> ，而是主要在于营造恐怖氛围。<br>氛围设计是如何体现的呢？</p>
+<ol>
+<li><p>美术形象设计</p>
+<ol>
+<li><p>己方人物<br> 能跟玩家交互的人物只有主角 <strong>Mono</strong> ,和电脑操控的 <strong>小六</strong> 。从外形上看两人体型都非常小，在没有特殊武器道具时，并不具备任何的攻击性手段。<img src="./游戏设计：《小小梦魇2》的恐怖感从哪来/OIP.jpeg" style="zoom:100%;" /></p>
+<p> （图为游戏的宣传图，可以看出Mono和小六体型十分瘦小，旁边是凶险的敌人和陷阱）</p>
+</li>
+<li><p>敌方人物<br> 敌方人物主要能够分为两类。第一种是玩家可以通过灵活使用道具进行战斗来消灭的，比如在学校中遇到的小人、在医院遇到的会动的手，主要考验玩家对攻击时机的选择；第二类是玩家不能直接战胜，必须思考解密、进行灵活周旋的敌人，比如每一关都会有的BOSS,主要考察玩家对于道具和地图的使用。<br> 在敌方人物设计时，其大多都与人有关。比如刚才说到的小人和会动的手，学校里的女老师可以把脖子伸得特别长。在这种强化人类的某种特征的画风下，这种像人又不完全是的人的设定，产生了 <strong>恐怖谷效应</strong> ，令玩家产生恐惧感。</p>
+</li>
+</ol>
+   <img src="./游戏设计：《小小梦魇2》的恐怖感从哪来/小小梦魇2/2022-11-06_23-13.png" style="zoom:50%;" />
+ 
+<p> （图为女老师伸脖子追杀Mono的情景）  
+ </p>
+</li>
+<li><p>玩家操作</p>
+<ol>
+<li>视角控制<br> 在《小小梦魇2》中，玩家主要通过特定的视角进行操作，也可以通过手柄的右摇杆进行调整，但是被限制的非常死，可以操控的范围很小，所以基本上想要得到更多的关于场景的信息，玩家将不得不进行移动来观察。这就使得玩家不能在绝对的安全区，对场景进行观察后，再进行操作游玩；而是始终让玩家处于不安全的位置，一边前进一边观察地图，决定下一步的动向。</li>
+<li>移动模式<br> 玩家的移动方式分为三种，奔跑、走路、蹑足（下蹲）前行，通过手柄的正方形按钮和L1按钮。这三者中移动速度递减，产生的声音递增。有些特殊的平台或者沟道需要用到冲刺和下蹲前行，或者冲刺后进行滑铲，考验玩家对时机的把握能力。</li>
+<li>互动设计<br> 玩家在操作场景中可以交互的道具时，比如拾取道具、攀爬物品、拿到武器，玩家必须一直摁着手柄的交互按钮，增加玩家的操作内容。并且在特殊的场景时，玩家会从手柄处接受到强烈的反馈，尤其是在后期，关卡中会要求玩家同时进行多种操作，提高关卡的难度和玩家的紧张程度。</li>
+<li>战斗方式<br> 除去剧情杀，玩家的攻击手段主要靠拾取地上的锤子或铁棍，对前方进行攻击。<br> 在战斗中，玩家有任何的失误都会导致死亡，所以玩家要保持高度的专注。<br> 攻击的前后摇特别长，Mono在执行攻击动作时，有一段长长的将锤子举过头顶挥击的动作；在执行攻击动作后，Mono会有一段时间不能操控，等待恢复体力收回锤子。在面对多个敌人时，需要玩家掌握好攻击时机的同时，也要规划好路线，保证在攻击前后的疲软期不被攻击。<br> 在这种战斗模式的作用下，玩家能够体验到与其他游戏中战斗的爽快感相反的脆弱无力感，需要玩家小小翼翼进行操作，保证了紧张感。</li>
+</ol>
+</li>
+<li><p>场景设计<br> 游戏中主要的场景大多数玩家在日常生活中有一定的了解。游戏在设计场景时，以日常生活为基底，进行改造使之具有恐怖感。</p>
+<ol>
+<li>发掘内心中的恐惧<br> 在游戏的宏大的场景，比如高楼之间，海边时，玩家操控的瘦小的Mono会在与这些场景对比中或者与巨型的敌人对比反差，显得十分的渺小与无助。<br> 在游戏中还有很多地方会出现人类的器官，比如像蜘蛛一样移动的手、被装载罐子里的大脑和内脏。并且在游戏的大多场景中，光源都十分的少，且亮度不足，还伴有闪烁的效果，给人以阴森的不安全感。在声音上，游戏中的解密场景大多是寂静的，只有主角与场景互动的声音；而与BOSS交互的场景里，游戏刻意地强化了BOSS的音效，并且让玩家能够体验到心跳的声音，搭配上强烈的手柄的振动，十分具有沉浸感。</li>
+</ol>
+ <img src="./游戏设计：《小小梦魇2》的恐怖感从哪来/小小梦魇2/一堆手.png" style="zoom: 67%;" />
+
+<ol start="2">
+<li>黑童话色彩<br> 游戏借鉴了现实生活里的恐怖场景，比如医院的停尸间、学校的霸凌。并且用阴森的音乐、昏暗的灯光、道具进行烘托。比如医院停尸间的<code>123木头人</code>，在这一关中，有会动的骨骼架追捕Mono,玩家需要一边移动一边调整视角使能够始终用手电筒照射他们使之停下。<em>然而有玩家发现可以一直旋转手电筒直接过关</em></li>
+</ol>
+ <img src="./游戏设计：《小小梦魇2》的恐怖感从哪来/小小梦魇2/123木头人.gif" style="zoom: 150%;" />
+
+<ol start="3">
+<li>灵异色彩<br> 游戏中有不少奇特的元素，比如既能够吸引敌人也可以进行传送的电视机，玩家需要运用这两个特性来解密。</li>
+</ol>
+<h2 id="一点点感想总结"><a href="#一点点感想总结" class="headerlink" title="一点点感想总结"></a>一点点感想总结</h2><p> 说了这么多《小小梦魇2》做的好的地方，但是该游戏中还是有许多地方值得改善。举个例子，视角上来说，游戏属于2.5D游戏，在涉及到镜头前后方向上移动或者方向选择时，比如挥击锤子、逃跑时路线选择。如果因为游戏设计本身带来的视觉差异，使玩家一次又一次因为非自身元素而死亡重来，很容易使玩家体验到的恐怖变成烦躁，让玩家少了游戏体验效果。不过总的来说，《小小梦魇2》仍然是一款瑕不掩瑜的佳作，值得你花上一个周末一玩。</p>
+</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%B8%B8%E6%88%8F%E7%AD%96%E5%88%92%E3%80%81%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1/" rel="tag"># 游戏策划、游戏设计</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/10/22/NovelAi%E7%9A%84%E7%99%BD%E5%AB%96%E4%BD%BF%E7%94%A8/" rel="prev" title="Novel AI的白嫖使用">
+                  <i class="fa fa-chevron-left"></i> Novel AI的白嫖使用
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2023/03/29/%E8%B0%88%E8%B0%88APEX%E4%B8%8EPUBG%E6%B8%B8%E6%88%8F%E4%BD%93%E9%AA%8C%E6%84%9F%E4%B8%8D%E5%90%8C%E7%9A%84%E8%AE%BE%E8%AE%A1/" rel="next" title="谈谈APEX与PUBG游戏体验感不同的设计">
+                  谈谈APEX与PUBG游戏体验感不同的设计 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="SOHUCS" sid="9c19d80c6b6e37da84c84fe7e5e11c4a"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">syhxzzz</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+<script class="next-config" data-name="changyan" type="application/json">{"enable":true,"appid":15673102339,"appkey":"SYHXSQQ0508"}</script>
+<script src="/js/third-party/comments/changyan.js"></script>
+
+</body>
+</html>
